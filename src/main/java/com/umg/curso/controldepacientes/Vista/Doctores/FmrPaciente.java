@@ -1,0 +1,263 @@
+
+package com.umg.curso.controldepacientes.Vista.Doctores;
+
+import com.umg.curso.controldepacientes.Controller.PacienteController;
+import com.umg.curso.controldepacientes.Modelo.Doctor;
+import com.umg.curso.controldepacientes.Modelo.Paciente;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JComboBox;
+
+
+public class FmrPaciente extends javax.swing.JFrame implements ActionListener {
+
+    PacienteController controlador = new PacienteController();
+    
+    public FmrPaciente(Object[] datos) {
+        initComponents();
+        btnModificar.addActionListener(this);
+        controlador.LlenarboxD(boxDoc);
+        seleccionarItemParecido(boxDoc, datos[9].toString());
+        //llenamos
+        txtID.setText(datos[0].toString());
+        txtNombre.setText(datos[1].toString());
+        txtApellidos.setText(datos[2].toString());
+        txtEdad.setText(datos[3].toString());
+        txtNumero.setText(datos[4].toString());
+        txtDireccion.setText(datos[5].toString());
+        txtEnfermedad.setText(datos[6].toString());
+        txtIngreso.setText(datos[7].toString());
+        txtSalida.setText(datos[8].toString());
+        
+        
+        //se configura boton de salida para que se vea opaco (estetica)
+        btnSalir.setOpaque(false);
+        btnSalir.setContentAreaFilled(false);
+        btnSalir.setBorderPainted(false);
+        btnSalir.setFocusPainted(false);
+        btnSalir.addActionListener(this);
+    }
+
+    
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        jPanel1 = new javax.swing.JPanel();
+        txtNombre = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        txtEdad = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        txtNumero = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        txtApellidos = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        txtDireccion = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        txtEnfermedad = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        txtIngreso = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        txtSalida = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        btnModificar = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
+        txtID = new javax.swing.JTextField();
+        btnSalir = new javax.swing.JButton();
+        boxDoc = new javax.swing.JComboBox<>();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setLayout(null);
+        jPanel1.add(txtNombre);
+        txtNombre.setBounds(370, 140, 90, 22);
+
+        jLabel2.setText("ID");
+        jPanel1.add(jLabel2);
+        jLabel2.setBounds(310, 110, 20, 20);
+
+        jLabel3.setText("Edad");
+        jPanel1.add(jLabel3);
+        jLabel3.setBounds(310, 180, 30, 20);
+        jPanel1.add(txtEdad);
+        txtEdad.setBounds(360, 180, 90, 22);
+
+        jLabel4.setText("Numero");
+        jPanel1.add(jLabel4);
+        jLabel4.setBounds(470, 140, 60, 20);
+        jPanel1.add(txtNumero);
+        txtNumero.setBounds(530, 140, 100, 22);
+
+        jLabel5.setText("Apellidos");
+        jPanel1.add(jLabel5);
+        jLabel5.setBounds(470, 100, 60, 20);
+        jPanel1.add(txtApellidos);
+        txtApellidos.setBounds(530, 100, 100, 22);
+
+        jLabel6.setText("Direccion");
+        jPanel1.add(jLabel6);
+        jLabel6.setBounds(300, 220, 60, 20);
+        jPanel1.add(txtDireccion);
+        txtDireccion.setBounds(360, 220, 90, 22);
+
+        jLabel7.setText("Enfermedad");
+        jPanel1.add(jLabel7);
+        jLabel7.setBounds(470, 180, 70, 20);
+        jPanel1.add(txtEnfermedad);
+        txtEnfermedad.setBounds(540, 180, 90, 22);
+
+        jLabel8.setText("Doctor");
+        jPanel1.add(jLabel8);
+        jLabel8.setBounds(280, 260, 80, 20);
+
+        jLabel9.setText("Ingreso");
+        jPanel1.add(jLabel9);
+        jLabel9.setBounds(480, 220, 50, 20);
+        jPanel1.add(txtIngreso);
+        txtIngreso.setBounds(530, 220, 100, 22);
+
+        jLabel10.setText("Salida");
+        jPanel1.add(jLabel10);
+        jLabel10.setBounds(300, 300, 60, 20);
+        jPanel1.add(txtSalida);
+        txtSalida.setBounds(380, 300, 100, 22);
+
+        jLabel1.setText("Modificar");
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(480, 60, 60, 16);
+
+        btnModificar.setText("Modificar");
+        jPanel1.add(btnModificar);
+        btnModificar.setBounds(470, 400, 100, 23);
+
+        jLabel11.setText("Nombre");
+        jPanel1.add(jLabel11);
+        jLabel11.setBounds(300, 140, 44, 20);
+        jPanel1.add(txtID);
+        txtID.setBounds(340, 110, 90, 22);
+
+        btnSalir.setIcon(new javax.swing.ImageIcon("C:\\Users\\franc\\OneDrive\\Escritorio\\Semestre 5\\Programas\\Imagenes Proyecto\\boton-de-flecha-izquierda-del-teclado.png")); // NOI18N
+        btnSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(btnSalir);
+        btnSalir.setBounds(10, 10, 40, 40);
+
+        jPanel1.add(boxDoc);
+        boxDoc.setBounds(340, 260, 190, 22);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 894, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 594, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+
+   
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(FmrPaciente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(FmrPaciente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(FmrPaciente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(FmrPaciente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+             
+            }
+        });
+    }
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> boxDoc;
+    private javax.swing.JButton btnModificar;
+    private javax.swing.JButton btnSalir;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField txtApellidos;
+    private javax.swing.JTextField txtDireccion;
+    private javax.swing.JTextField txtEdad;
+    private javax.swing.JTextField txtEnfermedad;
+    private javax.swing.JTextField txtID;
+    private javax.swing.JTextField txtIngreso;
+    private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtNumero;
+    private javax.swing.JTextField txtSalida;
+    // End of variables declaration//GEN-END:variables
+    
+    public void seleccionarItemParecido(JComboBox comboBox, String textoBuscado) {
+    for (int i = 0; i < comboBox.getItemCount(); i++) {
+        Object item = comboBox.getItemAt(i);
+        if (item.toString().toLowerCase().contains(textoBuscado.toLowerCase())) {
+            comboBox.setSelectedIndex(i);
+            break;
+        }
+    }
+}
+    
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if(e.getSource()==btnModificar){
+           int ID= Integer.parseInt(txtID.getText());
+           Doctor doctorSeleccionado = (Doctor) boxDoc.getSelectedItem();
+           int idDoctor = doctorSeleccionado.getId();
+           Paciente paciente= new Paciente();
+           PacienteController controlador = new PacienteController();
+           paciente.setNombres(txtNombre.getText());
+           paciente.setApellidos(txtApellidos.getText());
+           paciente.setEdad(Integer.parseInt(txtEdad.getText()));
+           paciente.setNumero(Integer.parseInt(txtNumero.getText()));
+           paciente.setDireccion(txtDireccion.getText());
+           paciente.setEnfermedad(txtDireccion.getText());
+           paciente.setDoctor(idDoctor);
+           paciente.setIngreso(txtIngreso.getText());
+           paciente.setSalida(txtSalida.getText());
+           controlador.Actualizar(paciente,ID);
+           
+           
+        }else if(e.getSource()== btnSalir){
+            this.dispose();
+            
+        }
+                
+    }
+}
