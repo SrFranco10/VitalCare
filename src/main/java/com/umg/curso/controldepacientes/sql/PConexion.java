@@ -259,43 +259,46 @@ public class PConexion {
         }
     }
      
-    public boolean agregarCita(JTextField paramCita, int idPaciente, int idDoctor, Timestamp fechaHora) {
-    String insertSQL = "INSERT INTO public.\"cita\" (id_cita, id_paciente, id_doctor, fecha_hora) VALUES (?, ?, ?, ?)";
-    String updateSQL = "UPDATE public.\"pacientes\" SET \"Id_doctor\" = ? WHERE \"ID\" = ?";
+    public Integer agregarCita(int idPaciente, int idDoctor, Timestamp fechaHora) {
+        String insertSQL = "INSERT INTO public.\"cita\" (id_paciente, id_doctor, fecha_hora) VALUES (?, ?, ?) RETURNING id_Cita";
+        String updateSQL = "UPDATE public.\"pacientes\" SET \"Id_doctor\" = ? WHERE \"ID\" = ?";
 
-    try (Connection conn = conectar) {
-        conn.setAutoCommit(false); // Iniciar transacción
+        try (Connection conn = conectar) {
+            conn.setAutoCommit(false); // Iniciar transacción
 
-        try (PreparedStatement psInsert = conn.prepareStatement(insertSQL);
-             PreparedStatement psUpdate = conn.prepareStatement(updateSQL)) {
+            try (
+                    PreparedStatement psInsert = conn.prepareStatement(insertSQL); PreparedStatement psUpdate = conn.prepareStatement(updateSQL)) {
+                // Insertar cita y obtener ID generado
+                psInsert.setInt(1, idPaciente);
+                psInsert.setInt(2, idDoctor);
+                psInsert.setTimestamp(3, fechaHora);
 
-            // Insertar cita
-            psInsert.setInt(1, Integer.parseInt(paramCita.getText()));
-            psInsert.setInt(2, idPaciente);
-            psInsert.setInt(3, idDoctor);
-            psInsert.setTimestamp(4, fechaHora);
-            psInsert.executeUpdate();
+                ResultSet rs = psInsert.executeQuery(); 
+                Integer idCita = null;
+                if (rs.next()) {
+                    idCita = rs.getInt("id_Cita"); // obtener el ID generado
+                }
 
-            // Actualizar doctor del paciente
-            psUpdate.setInt(1, idDoctor);
-            psUpdate.setInt(2, idPaciente);
-            psUpdate.executeUpdate();
+                // Actualizar doctor del paciente
+                psUpdate.setInt(1, idDoctor);
+                psUpdate.setInt(2, idPaciente);
+                psUpdate.executeUpdate();
 
-            conn.commit(); // Confirmar si todo va bien
-            return true;
+                conn.commit(); // Confirmar si todo va bien
+                return idCita; // retornar el ID de la cita insertada
+
+            } catch (SQLException e) {
+                conn.rollback(); // Deshacer si algo falla
+                JOptionPane.showMessageDialog(null, "Error durante la transacción: " + e.getMessage());
+                return null;
+            }
 
         } catch (SQLException e) {
-            conn.rollback(); // Deshacer si algo falla
-            JOptionPane.showMessageDialog(null, "Error durante la transacción: " + e.getMessage());
-            return false;
+            JOptionPane.showMessageDialog(null, "Error de conexión: " + e.getMessage());
+            return null;
         }
-    } catch (SQLException e) {
-        JOptionPane.showMessageDialog(null, "Error de conexión: " + e.getMessage());
-        return false;
     }
-    
-    
-}
+
     
     public void ConsultarCitas(DefaultTableModel tablemodel) throws SQLException {
         int numeroColumna = 0;

@@ -5,10 +5,12 @@ import com.umg.curso.controldepacientes.sql.PConexion;
 import com.umg.curso.controldepacientes.Modelo.Paciente;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
@@ -138,21 +140,32 @@ public class PacienteController implements CPacientes  {
                
     }
     @Override
-    public boolean agregarCita(JTextField paramCita,int idPaciente, int idDoctor, Timestamp fechaHora) {
-    
+    public boolean agregarCita(JComboBox boxDoctores, JComboBox boxPacientes, JSpinner Fecha) {
+        //Se consigue la informacion de los ComboBox y JSpinner
+        Doctor doctorSeleccionado = (Doctor) boxDoctores.getSelectedItem();
+        Paciente pacienteSeleccionado = (Paciente) boxPacientes.getSelectedItem();
+        Date fechaSeleccionada = (Date) Fecha.getValue();
 
-    try {
-        conexion= new PConexion();
-        conexion.establecerConexion();
-        conexion.agregarCita(paramCita,idPaciente, idDoctor, fechaHora);
+        //Se declara variables para utilizacion mas sencilla y entendible
+        int idPaciente = pacienteSeleccionado.getID();
+        int idDoctor = doctorSeleccionado.getId();
+        Timestamp fechaHora = new Timestamp(fechaSeleccionada.getTime());
 
-        
-        return true; 
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(null, "Error al agregar la cita: " + e.getMessage());
-        return false;
-    }
-     
+        //se empieza a realizar el llamado para la consulta
+        try {
+            conexion = new PConexion();
+            conexion.establecerConexion();
+            Integer idCita = conexion.agregarCita(idPaciente, idDoctor, fechaHora);
+            //Validacion de que si el agregar cita fue exitoso
+            if (idCita != null) {
+                JOptionPane.showMessageDialog(null, "La cita se agregó correctamente. ID: " + idCita);
+            }
+            return true;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al agregar la cita: " + e.getMessage());
+            return false;
+        }
+
     }
     
     @Override

@@ -128,12 +128,7 @@ public class FmrPrincipal extends javax.swing.JFrame implements MouseListener{
             Credenciales.setVisible(true);
             this.dispose();
         }
-        if(e.getSource()==btnCita){
-            FmrCita Citas = new FmrCita();
-            Citas.setBounds(0, 0, 900, 600);
-            Citas.setVisible(true);
-            this.dispose();
-        }
+       
                
     }
 

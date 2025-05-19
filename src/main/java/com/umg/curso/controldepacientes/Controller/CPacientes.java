@@ -5,7 +5,8 @@ import com.umg.curso.controldepacientes.Modelo.Doctor;
 import com.umg.curso.controldepacientes.Modelo.Paciente;
 import java.sql.Timestamp;
 import javax.swing.JComboBox;
-import javax.swing.JTextField;
+import javax.swing.JSpinner;
+
 import javax.swing.table.DefaultTableModel;
 
 
@@ -20,7 +21,7 @@ public interface CPacientes {
 
     public void Llenarbox(JComboBox paramDocBox, JComboBox paramPacBox);
 
-    public boolean agregarCita(JTextField paramCita, int idPaciente, int idDoctor, Timestamp fechaHora);
+    public boolean agregarCita(JComboBox boxDoctores, JComboBox boxPacientes, JSpinner Fecha);
     
     public void ConsultarCitas(DefaultTableModel modelo);
     
