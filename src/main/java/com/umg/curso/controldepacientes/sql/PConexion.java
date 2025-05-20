@@ -1,6 +1,7 @@
 
 package com.umg.curso.controldepacientes.sql;
 
+import com.umg.curso.controldepacientes.Modelo.Antecedente;
 import com.umg.curso.controldepacientes.Modelo.Doctor;
 import com.umg.curso.controldepacientes.Modelo.Paciente;
 import com.umg.curso.controldepacientes.Vista.Doctores.FmrPaciente;
@@ -50,9 +51,9 @@ public class PConexion {
                 
                 PreparedStatement st = conectar.prepareStatement("""
                                                                  INSERT INTO public.pacientes(
-                                                                 \t "ID","Nombre", "Apellido", "Edad", "Numero", "Direccion", "Enfermedad", "Ingreso")
-                                                                 \tVALUES (?, ?, ?, ?, ?, ?, ?, ?);""");
-                st.setInt(1, paciente.getID());
+                                                                 \t "ID","Nombre", "Apellido", "Edad", "Numero", "Direccion", "Enfermedad", "Ingreso", "Estado")
+                                                                 \tVALUES (?, ?, ?, ?, ?, ?, ?, ?, 'en atencion');""");
+                st.setLong(1, paciente.getID());
                 st.setString(2, paciente.getNombres());
                 st.setString(3, paciente.getApellidos());
                 st.setInt(4, paciente.getEdad());
@@ -60,7 +61,7 @@ public class PConexion {
                 st.setString(6, paciente.getDireccion());
                 st.setString(7, paciente.getEnfermedad());
                 st.setString(8, paciente.getIngreso());
-
+                
                 
 
                 st.execute();
@@ -84,7 +85,7 @@ public class PConexion {
             if (conectar != null) {
                 PreparedStatement st = conectar.prepareStatement("""
                                                                  UPDATE public.pacientes
-                                                                 \tSET "Nombre"=?, "Apellido"=?, "Edad"=?, "Numero"=?, "Direccion"=?, "Enfermedad"=?, "Id_doctor"=?, "Ingreso"=?, "Salida"=?
+                                                                 \tSET "Nombre"=?, "Apellido"=?, "Edad"=?, "Numero"=?, "Direccion"=?, "Enfermedad"=?, "Id_doctor"=?, "Ingreso"=?, "Estado"=?
                                                                  \tWHERE "ID"=""" + id_paciente+";" );
                 st.setString(1, paciente.getNombres());
                 st.setString(2, paciente.getApellidos());
@@ -138,22 +139,21 @@ public class PConexion {
         tablemodel.setColumnCount(0);
         PreparedStatement st = conectar.prepareStatement("""
                                                          SELECT 
-                                                             p."ID",
-                                                             p."Nombre",
-                                                             p."Apellido",
-                                                         \tp."Edad",
-                                                         \tp."Numero",
-                                                         \tp."Direccion",
-                                                         \tp."Enfermedad",
-                                                         \tp."Ingreso",
-                                                         \tp."Salida",
-                                                             d."Nombre" || ' ' || d."Apellido" AS "Nombre_Doctor"
-                                                         FROM 
-                                                             public."pacientes" p
-                                                         LEFT JOIN 
-                                                             public."Doctores" d
-                                                         ON 
-                                                             p."Id_doctor" = d."Id_Doctor";""");
+                                                              p."ID",
+                                                              p."Nombre" || ' ' || p."Apellido" AS "Nombre_Paciente",
+                                                              p."Edad",
+                                                              p."Numero",
+                                                              p."Direccion",
+                                                              p."Enfermedad",
+                                                              p."Ingreso",
+                                                              p."Estado",
+                                                              d."Nombre" || ' ' || d."Apellido" AS "Nombre_Doctor"
+                                                          FROM 
+                                                              public."pacientes" p
+                                                          LEFT JOIN 
+                                                              public."Doctores" d
+                                                          ON 
+                                                              p."Id_doctor" = d."Id_Doctor";""");
         try {
             resultado = st.executeQuery();
             numeroColumna = resultado.getMetaData().getColumnCount();
@@ -181,31 +181,28 @@ public class PConexion {
 
     }
     
-    public void SeleccionarPaciente(JTable paramTablaPaciente) {
+    public Object SeleccionarPaciente(JTable paramTablaPaciente) {
+        Object[] datos = new Object[9];
         try {
             int fila = paramTablaPaciente.getSelectedRow();
             if (fila >= 0) {
+                
+                
 
-                Object[] datos = new Object[10];
+                
 
                 for (int i = 0; i < datos.length; i++) {
                     datos[i] = paramTablaPaciente.getValueAt(fila, i);
                 }
-                if (datos[8] == null  ) {
-                    datos[8] = "";
-                }
-                
-                
 
-                FmrPaciente detalle = new FmrPaciente(datos);
-                detalle.setVisible(true);
+                
             } else {
                 JOptionPane.showMessageDialog(null, "Seleccione una fila");
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error: " + e.toString());
         }
-        
+        return datos;
     }
     
     public void LlenarComboBoxDoctores(JComboBox paramComboBox) throws SQLException {
@@ -373,6 +370,45 @@ public class PConexion {
         JOptionPane.showMessageDialog(null, "Doctor registrado con exito");
 
     }
-}
+    
+    public void DarAlta(Antecedente antecedente, Timestamp fechaHora, int id_paciente) {
+    try {
+        if (conectar != null) {
+            // Insertar en la tabla antecedentes
+            PreparedStatement st = conectar.prepareStatement("""
+                INSERT INTO public.antecedentes(
+                    id_paciente, fecha_salida, descripcion, doctor, enfermedad, fecha_ingreso)
+                VALUES (?, ?, ?, ?, ?, ?);
+            """);
+            
+            st.setInt(1, id_paciente);
+            st.setTimestamp(2, fechaHora);
+            st.setString(3, antecedente.getDescripcion());
+            st.setString(4, antecedente.getDoctor());
+            st.setString(5, antecedente.getEnfermedad());
+            st.setString(6, antecedente.getFecha_Ingreso());
+
+            st.execute();
+
+            // Actualizar el estado del paciente y eliminar la fecha_ingreso
+            PreparedStatement update = conectar.prepareStatement("""
+                UPDATE public.pacientes
+                SET "Estado" = 'alta', "Ingreso" = NULL, "Enfermedad" = NULL, "Id_doctor"=NULL
+                WHERE "ID" = ?;
+            """);
+            
+            update.setInt(1, id_paciente);
+            update.executeUpdate();
+
+            JOptionPane.showMessageDialog(null, "Paciente registrado con éxito");
+
+        } else {
+            System.out.println("No fue posible dar de alta");
+        }
+
+    } catch (Exception ex) {
+        JOptionPane.showMessageDialog(null, "Error al guardar el paciente: " + ex.getMessage());
+    }}}
+
 
 

@@ -1,5 +1,6 @@
 
 package com.umg.curso.controldepacientes.Controller;
+import com.umg.curso.controldepacientes.Modelo.Antecedente;
 import com.umg.curso.controldepacientes.Modelo.Doctor;
 import com.umg.curso.controldepacientes.sql.PConexion;
 import com.umg.curso.controldepacientes.Modelo.Paciente;
@@ -195,6 +196,42 @@ public class PacienteController implements CPacientes  {
         }
                
     }
+    @Override
+    public void LlenarboxP(JComboBox paramPacienteBox){
+        try{
+            conexion = new PConexion();
+            conexion.establecerConexion();
+            conexion.LlenarComboBoxPacientes(paramPacienteBox);
+            
+            
+        }catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Error al cargar " + ex.getMessage());
+        }
+               
+    }
+    
+    @Override
+    public boolean DarAlta(Antecedente antecedente , Timestamp fechaHora, JComboBox paramPaciente) {
+        Paciente pacienteSeleccionado= (Paciente) paramPaciente.getSelectedItem();
+        int id_paciente= pacienteSeleccionado.getID();
+        boolean respuesta = false;
+        try {
+            conexion = new PConexion();
+            conexion.establecerConexion();
+            conexion.DarAlta(antecedente,fechaHora,id_paciente);
+            respuesta = true;
+
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Error al guardar " + ex.getMessage());
+            respuesta = false;
+
+        }
+
+        return respuesta;
+
+    }
+    
+    
     
 
 }

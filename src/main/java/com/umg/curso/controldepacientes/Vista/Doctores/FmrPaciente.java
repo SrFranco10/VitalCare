@@ -16,20 +16,26 @@ public class FmrPaciente extends javax.swing.JFrame implements ActionListener {
     public FmrPaciente(Object[] datos) {
         initComponents();
         btnModificar.addActionListener(this);
+        //Llenamos el comboBox de doctores
+       String doctorValor = (datos[8] != null) ? datos[8].toString() : "";
         controlador.LlenarboxD(boxDoc);
-        seleccionarItemParecido(boxDoc, datos[9].toString());
-        //llenamos
+        seleccionarItemParecido(boxDoc, doctorValor);
+        //llenamos y separamos el nombre y apellido
         txtID.setText(datos[0].toString());
-        txtNombre.setText(datos[1].toString());
-        txtApellidos.setText(datos[2].toString());
-        txtEdad.setText(datos[3].toString());
-        txtNumero.setText(datos[4].toString());
-        txtDireccion.setText(datos[5].toString());
-        txtEnfermedad.setText(datos[6].toString());
-        txtIngreso.setText(datos[7].toString());
-        txtSalida.setText(datos[8].toString());
+        String[] partes = datos[1].toString().trim().split(" ");
+        String nombre = partes.length > 0 ? partes[0] : "";
+        String apellido = partes.length > 1 ? partes[1] : "";
+        //verificamos si estado no esta nulo 
         
-        
+        txtNombreCompleto.setText(nombre);
+        txtApellidos.setText(apellido);
+        txtEdad.setText(datos[2].toString());
+        txtNumero.setText(datos[3].toString());
+        txtDireccion.setText(datos[4].toString());
+        txtEnfermedad.setText(datos[5].toString());
+        txtIngreso.setText(datos[6].toString());
+        txtEstado.setText(datos[7].toString());
+
         //se configura boton de salida para que se vea opaco (estetica)
         btnSalir.setOpaque(false);
         btnSalir.setContentAreaFilled(false);
@@ -44,7 +50,7 @@ public class FmrPaciente extends javax.swing.JFrame implements ActionListener {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        txtNombre = new javax.swing.JTextField();
+        txtNombreCompleto = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         txtEdad = new javax.swing.JTextField();
@@ -60,7 +66,7 @@ public class FmrPaciente extends javax.swing.JFrame implements ActionListener {
         jLabel9 = new javax.swing.JLabel();
         txtIngreso = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
-        txtSalida = new javax.swing.JTextField();
+        txtEstado = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         btnModificar = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
@@ -71,8 +77,8 @@ public class FmrPaciente extends javax.swing.JFrame implements ActionListener {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setLayout(null);
-        jPanel1.add(txtNombre);
-        txtNombre.setBounds(370, 140, 90, 22);
+        jPanel1.add(txtNombreCompleto);
+        txtNombreCompleto.setBounds(370, 140, 90, 22);
 
         jLabel2.setText("ID");
         jPanel1.add(jLabel2);
@@ -118,11 +124,11 @@ public class FmrPaciente extends javax.swing.JFrame implements ActionListener {
         jPanel1.add(txtIngreso);
         txtIngreso.setBounds(530, 220, 100, 22);
 
-        jLabel10.setText("Salida");
+        jLabel10.setText("Estado");
         jPanel1.add(jLabel10);
         jLabel10.setBounds(300, 300, 60, 20);
-        jPanel1.add(txtSalida);
-        txtSalida.setBounds(380, 300, 100, 22);
+        jPanel1.add(txtEstado);
+        txtEstado.setBounds(380, 300, 100, 22);
 
         jLabel1.setText("Modificar");
         jPanel1.add(jLabel1);
@@ -217,11 +223,11 @@ public class FmrPaciente extends javax.swing.JFrame implements ActionListener {
     private javax.swing.JTextField txtDireccion;
     private javax.swing.JTextField txtEdad;
     private javax.swing.JTextField txtEnfermedad;
+    private javax.swing.JTextField txtEstado;
     private javax.swing.JTextField txtID;
     private javax.swing.JTextField txtIngreso;
-    private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtNombreCompleto;
     private javax.swing.JTextField txtNumero;
-    private javax.swing.JTextField txtSalida;
     // End of variables declaration//GEN-END:variables
     
     public void seleccionarItemParecido(JComboBox comboBox, String textoBuscado) {
@@ -242,7 +248,7 @@ public class FmrPaciente extends javax.swing.JFrame implements ActionListener {
            int idDoctor = doctorSeleccionado.getId();
            Paciente paciente= new Paciente();
            PacienteController controlador = new PacienteController();
-           paciente.setNombres(txtNombre.getText());
+           paciente.setNombres(txtNombreCompleto.getText());
            paciente.setApellidos(txtApellidos.getText());
            paciente.setEdad(Integer.parseInt(txtEdad.getText()));
            paciente.setNumero(Integer.parseInt(txtNumero.getText()));
@@ -250,7 +256,7 @@ public class FmrPaciente extends javax.swing.JFrame implements ActionListener {
            paciente.setEnfermedad(txtDireccion.getText());
            paciente.setDoctor(idDoctor);
            paciente.setIngreso(txtIngreso.getText());
-           paciente.setSalida(txtSalida.getText());
+           paciente.setSalida(txtEstado.getText());
            controlador.Actualizar(paciente,ID);
            
            

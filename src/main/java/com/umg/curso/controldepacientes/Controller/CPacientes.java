@@ -1,6 +1,7 @@
 
 package com.umg.curso.controldepacientes.Controller;
 
+import com.umg.curso.controldepacientes.Modelo.Antecedente;
 import com.umg.curso.controldepacientes.Modelo.Doctor;
 import com.umg.curso.controldepacientes.Modelo.Paciente;
 import java.sql.Timestamp;
@@ -28,5 +29,8 @@ public interface CPacientes {
     public void LlenarboxD(JComboBox paramDocBox);
     
     public boolean GuardarDoctor(Doctor doctor);
+    
+     public boolean DarAlta(Antecedente antecedente , Timestamp fechaHora, JComboBox paramPaciente);
+     public void LlenarboxP(JComboBox paramPacienteBox);
 
 }

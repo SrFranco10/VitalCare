@@ -2,21 +2,30 @@
 package com.umg.curso.controldepacientes.paneles;
 
 import com.umg.curso.controldepacientes.Controller.PacienteController;
+import com.umg.curso.controldepacientes.Vista.Doctores.FmrPaciente;
+import com.umg.curso.controldepacientes.Vista.Doctores.darAlta;
 import com.umg.curso.controldepacientes.sql.PConexion;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.table.DefaultTableModel;
 
 
 
 
-public class Pacientes extends javax.swing.JPanel {
+public class Pacientes extends javax.swing.JPanel implements ActionListener {
 
-   
+   PConexion controlador = new PConexion();
     public Pacientes() {
         initComponents();
         PacienteController controlador = new PacienteController();
         DefaultTableModel modelo = (DefaultTableModel) TableP.getModel();
         controlador.Consultar(modelo);
+        btnDarAlta.addActionListener(this);
+        btnModificar.addActionListener(this);
     }
+    
+    
+    
 
    
     @SuppressWarnings("unchecked")
@@ -27,6 +36,8 @@ public class Pacientes extends javax.swing.JPanel {
         tituloPacientes = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         TableP = new javax.swing.JTable();
+        btnDarAlta = new javax.swing.JButton();
+        btnModificar = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(746, 470));
         setLayout(null);
@@ -58,15 +69,21 @@ public class Pacientes extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(TableP);
 
-        background.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 700, 490));
+        background.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 700, 440));
+
+        btnDarAlta.setText("Dar Alta");
+        background.add(btnDarAlta, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 490, -1, -1));
+
+        btnModificar.setText("Modificar");
+        background.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 490, -1, -1));
 
         add(background);
         background.setBounds(0, 0, 720, 530);
     }// </editor-fold>//GEN-END:initComponents
 
     private void TablePMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablePMouseClicked
-        PConexion controlador = new PConexion();
-        controlador.SeleccionarPaciente(TableP);
+        
+        
         
     }//GEN-LAST:event_TablePMouseClicked
 
@@ -74,7 +91,24 @@ public class Pacientes extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable TableP;
     private javax.swing.JPanel background;
+    private javax.swing.JButton btnDarAlta;
+    private javax.swing.JButton btnModificar;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel tituloPacientes;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if(e.getSource()==btnDarAlta){
+                Object[] datos = (Object[]) controlador.SeleccionarPaciente(TableP);
+                darAlta detalle = new darAlta(datos);
+                detalle.setVisible(true);
+        }
+        if(e.getSource()==btnModificar){
+                Object[] datos = (Object[]) controlador.SeleccionarPaciente(TableP);
+                FmrPaciente detalle = new FmrPaciente(datos);
+                detalle.setVisible(true);
+        }
+        
+    }
 }
