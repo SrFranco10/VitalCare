@@ -207,7 +207,7 @@ public class ReingresoPaciente extends javax.swing.JPanel implements ActionListe
         }
         if(e.getSource()==btnReingresar){
             int ID= Integer.parseInt(txtID.getText());
-           
+           //se prepara para dar alta
            Paciente paciente= new Paciente();
            PacienteController controlador = new PacienteController();
            paciente.setNombres(txtNombre.getText());
