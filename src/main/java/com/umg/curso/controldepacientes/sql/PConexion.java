@@ -408,7 +408,81 @@ public class PConexion {
 
     } catch (Exception ex) {
         JOptionPane.showMessageDialog(null, "Error al guardar el paciente: " + ex.getMessage());
-    }}}
+    }}
+
+    public Object ConsultarPaciente(int id_paciente) throws SQLException {
+        PreparedStatement st = conectar.prepareStatement("""
+                                                         SELECT 
+                                                             "Nombre", 
+                                                             "Apellido",
+                                                             "Edad",
+                                                             "Numero",
+                                                             "Direccion"
+                                                         FROM 
+                                                             public.pacientes 
+                                                         WHERE 
+                                                             "ID" = ?;
+                                                         """);
+        Paciente  paciente= new Paciente();
+
+        try {
+            st.setInt(1, id_paciente);
+            ResultSet rs= st.executeQuery();
+            
+            if (rs.next()) {
+                
+                paciente.setNombres(rs.getString("Nombre"));
+                paciente.setApellidos(rs.getString("Apellido"));
+                paciente.setEdad(rs.getInt("Edad"));
+                paciente.setNumero(rs.getInt("Numero"));
+                paciente.setDireccion(rs.getString("Direccion"));
+            }else {
+                return null;
+            }
+            rs.close();
+            st.close();
+            
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e.toString());
+        }
+        return paciente;
+    }
+    
+    public boolean Reingreso(Paciente paciente, int id_paciente) {
+        boolean res = false;
+
+        try {
+            if (conectar != null) {
+                PreparedStatement st = conectar.prepareStatement("""
+                                                                 UPDATE public.pacientes
+                                                                 \tSET "Nombre"=?, "Apellido"=?, "Edad"=?, "Numero"=?, "Direccion"=?, "Enfermedad"=?, "Ingreso"=?, "Estado"=?
+                                                                 \tWHERE "ID"=""" + id_paciente+";" );
+                st.setString(1, paciente.getNombres());
+                st.setString(2, paciente.getApellidos());
+                st.setInt(3, paciente.getEdad());
+                st.setInt(4, paciente.getNumero());
+                st.setString(5, paciente.getDireccion());
+                st.setString(6, paciente.getEnfermedad());
+               
+                st.setString(7, paciente.getIngreso());
+                st.setString(8, "en atencion");
+
+                st.executeUpdate();
+                res = true;
+            } else {
+                res = false;
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Error al reingresar al paciente" + ex.getMessage());
+
+        }
+        
+        return res;
+
+    }
+    
+}
 
 
 

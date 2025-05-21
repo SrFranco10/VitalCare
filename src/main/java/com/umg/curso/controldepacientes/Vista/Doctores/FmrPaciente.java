@@ -253,7 +253,7 @@ public class FmrPaciente extends javax.swing.JFrame implements ActionListener {
            paciente.setEdad(Integer.parseInt(txtEdad.getText()));
            paciente.setNumero(Integer.parseInt(txtNumero.getText()));
            paciente.setDireccion(txtDireccion.getText());
-           paciente.setEnfermedad(txtDireccion.getText());
+           paciente.setEnfermedad(txtEnfermedad.getText());
            paciente.setDoctor(idDoctor);
            paciente.setIngreso(txtIngreso.getText());
            paciente.setSalida(txtEstado.getText());

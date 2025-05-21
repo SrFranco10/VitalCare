@@ -5,6 +5,7 @@ import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatMTMaterialLigh
 import com.umg.curso.controldepacientes.Vista.FmrLogin;
 import com.umg.curso.controldepacientes.paneles.Agendar;
 import com.umg.curso.controldepacientes.paneles.Ingresar;
+import com.umg.curso.controldepacientes.paneles.ReingresoPaciente;
 import com.umg.curso.controldepacientes.paneles.bienvenida;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -27,8 +28,9 @@ public class FmrRecepción extends javax.swing.JFrame implements ActionListener,
         SetDate();
         InitContent();
         btnIngresar.addActionListener(this);
-        btnAgendar.addActionListener(this);
+        btnReingreso.addActionListener(this);
         btnSalir1.addMouseListener(this);
+        btnAgendar.addActionListener(this);
         
     }
      private void InitContent(){
@@ -67,8 +69,9 @@ public class FmrRecepción extends javax.swing.JFrame implements ActionListener,
         jSeparator1 = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
         btnIngresar = new javax.swing.JButton();
-        btnAgendar = new javax.swing.JButton();
+        btnReingreso = new javax.swing.JButton();
         btnSalir1 = new javax.swing.JLabel();
+        btnAgendar = new javax.swing.JButton();
         content = new javax.swing.JPanel();
         header = new javax.swing.JPanel();
         titulo = new javax.swing.JLabel();
@@ -115,6 +118,24 @@ public class FmrRecepción extends javax.swing.JFrame implements ActionListener,
         jPanel2.add(btnIngresar);
         btnIngresar.setBounds(0, 360, 280, 51);
 
+        btnReingreso.setBackground(new java.awt.Color(169, 205, 216));
+        btnReingreso.setFont(new java.awt.Font("Roboto Black", 1, 18)); // NOI18N
+        btnReingreso.setForeground(new java.awt.Color(255, 255, 255));
+        btnReingreso.setIcon(new javax.swing.ImageIcon("C:\\Users\\franc\\OneDrive\\Escritorio\\Semestre 5\\Programas\\Imagenes Proyecto\\AgendarCita.png")); // NOI18N
+        btnReingreso.setText("Reingreso Paciente");
+        btnReingreso.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
+        btnReingreso.setBorderPainted(false);
+        btnReingreso.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnReingreso.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnReingreso.setIconTextGap(10);
+        jPanel2.add(btnReingreso);
+        btnReingreso.setBounds(0, 410, 280, 51);
+
+        btnSalir1.setIcon(new javax.swing.ImageIcon("C:\\Users\\franc\\OneDrive\\Escritorio\\Semestre 5\\Programas\\Imagenes Proyecto\\cerrar-sesion-de-usuario(1).png")); // NOI18N
+        btnSalir1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel2.add(btnSalir1);
+        btnSalir1.setBounds(0, 0, 40, 50);
+
         btnAgendar.setBackground(new java.awt.Color(169, 205, 216));
         btnAgendar.setFont(new java.awt.Font("Roboto Black", 1, 18)); // NOI18N
         btnAgendar.setForeground(new java.awt.Color(255, 255, 255));
@@ -126,12 +147,7 @@ public class FmrRecepción extends javax.swing.JFrame implements ActionListener,
         btnAgendar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnAgendar.setIconTextGap(10);
         jPanel2.add(btnAgendar);
-        btnAgendar.setBounds(0, 410, 280, 51);
-
-        btnSalir1.setIcon(new javax.swing.ImageIcon("C:\\Users\\franc\\OneDrive\\Escritorio\\Semestre 5\\Programas\\Imagenes Proyecto\\cerrar-sesion-de-usuario(1).png")); // NOI18N
-        btnSalir1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel2.add(btnSalir1);
-        btnSalir1.setBounds(0, 0, 40, 50);
+        btnAgendar.setBounds(0, 460, 280, 51);
 
         jPanel1.add(jPanel2);
         jPanel2.setBounds(0, 0, 280, 700);
@@ -224,6 +240,7 @@ public class FmrRecepción extends javax.swing.JFrame implements ActionListener,
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgendar;
     private javax.swing.JButton btnIngresar;
+    private javax.swing.JButton btnReingreso;
     private javax.swing.JLabel btnSalir1;
     private javax.swing.JPanel content;
     private javax.swing.JLabel fecha;
@@ -245,6 +262,9 @@ public class FmrRecepción extends javax.swing.JFrame implements ActionListener,
         }
         if(e.getSource()==btnAgendar){
             ShowJPanel(new Agendar());
+        }
+        if(e.getSource()==btnReingreso){
+            ShowJPanel(new ReingresoPaciente());
         }
         
     }

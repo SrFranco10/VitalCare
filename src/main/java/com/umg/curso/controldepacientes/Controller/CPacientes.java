@@ -31,6 +31,9 @@ public interface CPacientes {
     public boolean GuardarDoctor(Doctor doctor);
     
      public boolean DarAlta(Antecedente antecedente , Timestamp fechaHora, JComboBox paramPaciente);
+     
      public void LlenarboxP(JComboBox paramPacienteBox);
+     
+     public boolean Reingreso(Paciente paciente, int id_paciente);
 
 }

@@ -231,6 +231,30 @@ public class PacienteController implements CPacientes  {
 
     }
     
+    @Override
+    public boolean Reingreso(Paciente paciente, int id_paciente) {
+   
+        boolean respuesta = false;
+        try {
+            conexion = new PConexion();
+            conexion.establecerConexion();
+            if (conexion.Reingreso(paciente, id_paciente)) {
+                JOptionPane.showMessageDialog(null, "Paciente Reingresado con exito");
+                respuesta = true;
+            } else {
+                JOptionPane.showMessageDialog(null, "Error al reingresar el paciente");
+                respuesta = false;
+            }
+
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Error al reingresar " + ex.getMessage());
+            respuesta = false;
+        }
+        
+        return respuesta;
+    }
+    
+    
     
     
 

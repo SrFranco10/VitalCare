@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package com.umg.curso.controldepacientes.Vista.Doctores;
 
 import com.umg.curso.controldepacientes.Controller.PacienteController;
@@ -17,17 +14,21 @@ public class darAlta extends javax.swing.JFrame implements ActionListener{
 
    PacienteController controlador = new PacienteController();
     public darAlta(Object[] datos) {
+        
         initComponents();
+        //se llena los campos con la informacion traida de la tabla
         controlador.LlenarboxP(txtNombre);
         seleccionarItemParecido(txtNombre,datos[1].toString());
         txtId.setText(datos[0].toString());
         txtEnfermedad.setText(datos[5].toString());
         txtFechaIngreso.setText(datos[6].toString());
         txtDoctor.setText(datos[8].toString());
+        
+        //se Inicializan los botones
         btnDarAlta.addActionListener(this);
         btnSalir.addActionListener(this);
         
-        
+        //se desactiva campos para que no sean modificados solo sean visibles
         txtId.setEnabled(false);
         txtEnfermedad.setEnabled(false);
         txtFechaIngreso.setEnabled(false);
@@ -127,9 +128,7 @@ public class darAlta extends javax.swing.JFrame implements ActionListener{
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
+   
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -194,6 +193,7 @@ public class darAlta extends javax.swing.JFrame implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==btnDarAlta){
+            //se inicializa el controlador para poder añadir un antecedente
             PacienteController controlador = new PacienteController();
             Antecedente antecedente = new Antecedente();
             antecedente.setDescripcion(txtDescripcion.getText());
@@ -205,6 +205,7 @@ public class darAlta extends javax.swing.JFrame implements ActionListener{
             this.dispose();
         }
         if(e.getSource()==btnSalir){
+            //boton de salida cierra la ventana darAlta
             this.dispose();
         }
     }
