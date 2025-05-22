@@ -12,7 +12,8 @@ import javax.swing.JComboBox;
 public class FmrPaciente extends javax.swing.JFrame implements ActionListener {
 
     PacienteController controlador = new PacienteController();
-    
+    int Id_paciente;
+    String Estado;
     public FmrPaciente(Object[] datos) {
         initComponents();
         btnModificar.addActionListener(this);
@@ -21,7 +22,7 @@ public class FmrPaciente extends javax.swing.JFrame implements ActionListener {
         controlador.LlenarboxD(boxDoc);
         seleccionarItemParecido(boxDoc, doctorValor);
         //llenamos y separamos el nombre y apellido
-        txtID.setText(datos[0].toString());
+        Id_paciente=Integer.parseInt(datos[0].toString());
         String[] partes = datos[1].toString().trim().split(" ");
         String nombre = partes.length > 0 ? partes[0] : "";
         String apellido = partes.length > 1 ? partes[1] : "";
@@ -34,7 +35,7 @@ public class FmrPaciente extends javax.swing.JFrame implements ActionListener {
         txtDireccion.setText(datos[4].toString());
         txtEnfermedad.setText(datos[5].toString());
         txtIngreso.setText(datos[6].toString());
-        txtEstado.setText(datos[7].toString());
+        Estado=datos[7].toString();
 
         //se configura boton de salida para que se vea opaco (estetica)
         btnSalir.setOpaque(false);
@@ -43,7 +44,7 @@ public class FmrPaciente extends javax.swing.JFrame implements ActionListener {
         btnSalir.setFocusPainted(false);
         btnSalir.addActionListener(this);
     }
-
+    
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -51,7 +52,6 @@ public class FmrPaciente extends javax.swing.JFrame implements ActionListener {
 
         jPanel1 = new javax.swing.JPanel();
         txtNombreCompleto = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         txtEdad = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
@@ -65,12 +65,9 @@ public class FmrPaciente extends javax.swing.JFrame implements ActionListener {
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         txtIngreso = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
-        txtEstado = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         btnModificar = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
-        txtID = new javax.swing.JTextField();
         btnSalir = new javax.swing.JButton();
         boxDoc = new javax.swing.JComboBox<>();
 
@@ -78,17 +75,13 @@ public class FmrPaciente extends javax.swing.JFrame implements ActionListener {
 
         jPanel1.setLayout(null);
         jPanel1.add(txtNombreCompleto);
-        txtNombreCompleto.setBounds(370, 140, 90, 22);
-
-        jLabel2.setText("ID");
-        jPanel1.add(jLabel2);
-        jLabel2.setBounds(310, 110, 20, 20);
+        txtNombreCompleto.setBounds(360, 100, 90, 22);
 
         jLabel3.setText("Edad");
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(310, 180, 30, 20);
+        jLabel3.setBounds(300, 140, 30, 20);
         jPanel1.add(txtEdad);
-        txtEdad.setBounds(360, 180, 90, 22);
+        txtEdad.setBounds(360, 140, 90, 22);
 
         jLabel4.setText("Numero");
         jPanel1.add(jLabel4);
@@ -104,9 +97,9 @@ public class FmrPaciente extends javax.swing.JFrame implements ActionListener {
 
         jLabel6.setText("Direccion");
         jPanel1.add(jLabel6);
-        jLabel6.setBounds(300, 220, 60, 20);
+        jLabel6.setBounds(280, 180, 60, 20);
         jPanel1.add(txtDireccion);
-        txtDireccion.setBounds(360, 220, 90, 22);
+        txtDireccion.setBounds(360, 180, 90, 22);
 
         jLabel7.setText("Enfermedad");
         jPanel1.add(jLabel7);
@@ -116,19 +109,13 @@ public class FmrPaciente extends javax.swing.JFrame implements ActionListener {
 
         jLabel8.setText("Doctor");
         jPanel1.add(jLabel8);
-        jLabel8.setBounds(280, 260, 80, 20);
+        jLabel8.setBounds(280, 220, 80, 20);
 
         jLabel9.setText("Ingreso");
         jPanel1.add(jLabel9);
-        jLabel9.setBounds(480, 220, 50, 20);
+        jLabel9.setBounds(540, 220, 50, 20);
         jPanel1.add(txtIngreso);
-        txtIngreso.setBounds(530, 220, 100, 22);
-
-        jLabel10.setText("Estado");
-        jPanel1.add(jLabel10);
-        jLabel10.setBounds(300, 300, 60, 20);
-        jPanel1.add(txtEstado);
-        txtEstado.setBounds(380, 300, 100, 22);
+        txtIngreso.setBounds(600, 220, 100, 22);
 
         jLabel1.setText("Modificar");
         jPanel1.add(jLabel1);
@@ -140,9 +127,7 @@ public class FmrPaciente extends javax.swing.JFrame implements ActionListener {
 
         jLabel11.setText("Nombre");
         jPanel1.add(jLabel11);
-        jLabel11.setBounds(300, 140, 44, 20);
-        jPanel1.add(txtID);
-        txtID.setBounds(340, 110, 90, 22);
+        jLabel11.setBounds(290, 100, 44, 20);
 
         btnSalir.setIcon(new javax.swing.ImageIcon("C:\\Users\\franc\\OneDrive\\Escritorio\\Semestre 5\\Programas\\Imagenes Proyecto\\boton-de-flecha-izquierda-del-teclado.png")); // NOI18N
         btnSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -150,7 +135,7 @@ public class FmrPaciente extends javax.swing.JFrame implements ActionListener {
         btnSalir.setBounds(10, 10, 40, 40);
 
         jPanel1.add(boxDoc);
-        boxDoc.setBounds(340, 260, 190, 22);
+        boxDoc.setBounds(330, 220, 190, 22);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -208,9 +193,7 @@ public class FmrPaciente extends javax.swing.JFrame implements ActionListener {
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnSalir;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -223,8 +206,6 @@ public class FmrPaciente extends javax.swing.JFrame implements ActionListener {
     private javax.swing.JTextField txtDireccion;
     private javax.swing.JTextField txtEdad;
     private javax.swing.JTextField txtEnfermedad;
-    private javax.swing.JTextField txtEstado;
-    private javax.swing.JTextField txtID;
     private javax.swing.JTextField txtIngreso;
     private javax.swing.JTextField txtNombreCompleto;
     private javax.swing.JTextField txtNumero;
@@ -243,7 +224,7 @@ public class FmrPaciente extends javax.swing.JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==btnModificar){
-           int ID= Integer.parseInt(txtID.getText());
+           
            Doctor doctorSeleccionado = (Doctor) boxDoc.getSelectedItem();
            int idDoctor = doctorSeleccionado.getId();
            Paciente paciente= new Paciente();
@@ -256,8 +237,9 @@ public class FmrPaciente extends javax.swing.JFrame implements ActionListener {
            paciente.setEnfermedad(txtEnfermedad.getText());
            paciente.setDoctor(idDoctor);
            paciente.setIngreso(txtIngreso.getText());
-           paciente.setSalida(txtEstado.getText());
-           controlador.Actualizar(paciente,ID);
+           paciente.setSalida(Estado);
+           controlador.Actualizar(paciente,Id_paciente);
+           this.dispose();
            
            
         }else if(e.getSource()== btnSalir){

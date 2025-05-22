@@ -1,40 +1,39 @@
-
 package com.umg.curso.controldepacientes.Vista.Doctores;
 
 import com.umg.curso.controldepacientes.Controller.PacienteController;
 import com.umg.curso.controldepacientes.Modelo.Antecedente;
-import com.umg.curso.controldepacientes.sql.PConexion;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Timestamp;
 import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 
+public class darAlta extends javax.swing.JFrame implements ActionListener {
 
-public class darAlta extends javax.swing.JFrame implements ActionListener{
+    PacienteController controlador = new PacienteController();
 
-   PacienteController controlador = new PacienteController();
     public darAlta(Object[] datos) {
-        
+
         initComponents();
         //se llena los campos con la informacion traida de la tabla
         controlador.LlenarboxP(txtNombre);
-        seleccionarItemParecido(txtNombre,datos[1].toString());
+        seleccionarItemParecido(txtNombre, datos[1].toString());
         txtId.setText(datos[0].toString());
         txtEnfermedad.setText(datos[5].toString());
         txtFechaIngreso.setText(datos[6].toString());
         txtDoctor.setText(datos[8].toString());
-        
+
         //se Inicializan los botones
         btnDarAlta.addActionListener(this);
         btnSalir.addActionListener(this);
-        
+
         //se desactiva campos para que no sean modificados solo sean visibles
         txtId.setEnabled(false);
         txtEnfermedad.setEnabled(false);
         txtFechaIngreso.setEnabled(false);
         txtDoctor.setEnabled(false);
         txtNombre.setEnabled(false);
-        
+
         //se configura boton de salida para que se vea opaco (estetica)
         btnSalir.setOpaque(false);
         btnSalir.setContentAreaFilled(false);
@@ -43,7 +42,6 @@ public class darAlta extends javax.swing.JFrame implements ActionListener{
         btnSalir.addActionListener(this);
     }
 
-   
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -128,7 +126,6 @@ public class darAlta extends javax.swing.JFrame implements ActionListener{
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-   
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -156,19 +153,20 @@ public class darAlta extends javax.swing.JFrame implements ActionListener{
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                
+
             }
         });
     }
-    
-     public void seleccionarItemParecido(JComboBox comboBox, String textoBuscado) {
-    for (int i = 0; i < comboBox.getItemCount(); i++) {
-        Object item = comboBox.getItemAt(i);
-        if (item.toString().toLowerCase().contains(textoBuscado.toLowerCase())) {
-            comboBox.setSelectedIndex(i);
-            break;
+
+    public void seleccionarItemParecido(JComboBox comboBox, String textoBuscado) {
+        for (int i = 0; i < comboBox.getItemCount(); i++) {
+            Object item = comboBox.getItemAt(i);
+            if (item.toString().toLowerCase().contains(textoBuscado.toLowerCase())) {
+                comboBox.setSelectedIndex(i);
+                break;
+            }
         }
-    }}
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel background;
@@ -192,23 +190,28 @@ public class darAlta extends javax.swing.JFrame implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource()==btnDarAlta){
+        if (e.getSource() == btnDarAlta) {
             //se inicializa el controlador para poder añadir un antecedente
-            PacienteController controlador = new PacienteController();
-            Antecedente antecedente = new Antecedente();
-            antecedente.setDescripcion(txtDescripcion.getText());
-            antecedente.setDoctor(txtDoctor.getText());
-            antecedente.setFecha_Ingreso(txtFechaIngreso.getText());
-            antecedente.setEnfermedad(txtEnfermedad.getText());
-            Timestamp fechaHora = new Timestamp(System.currentTimeMillis());
-            controlador.DarAlta(antecedente, fechaHora, txtNombre);
-            this.dispose();
+            if (txtDescripcion.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Descripcion no puede estar vacio ");
+            } else if (txtDoctor.getText().equals("<Falta  Asignar>")){
+                JOptionPane.showMessageDialog(null, "El paciente no tiene ningun doctor asigando por lo cual no ha sido atendio ERROR a dar de alta ");
+            } else {
+                PacienteController controlador = new PacienteController();
+                Antecedente antecedente = new Antecedente();
+                antecedente.setDescripcion(txtDescripcion.getText());
+                antecedente.setDoctor(txtDoctor.getText());
+                antecedente.setFecha_Ingreso(txtFechaIngreso.getText());
+                antecedente.setEnfermedad(txtEnfermedad.getText());
+                Timestamp fechaHora = new Timestamp(System.currentTimeMillis());
+                controlador.DarAlta(antecedente, fechaHora, txtNombre);
+                this.dispose();
+            }
         }
-        if(e.getSource()==btnSalir){
+        if (e.getSource() == btnSalir) {
             //boton de salida cierra la ventana darAlta
             this.dispose();
         }
     }
-    
-   
+
 }

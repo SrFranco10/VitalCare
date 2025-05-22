@@ -1,10 +1,11 @@
-
+//pantalla para poder hacer el ingreso del paciente nuevo
 package com.umg.curso.controldepacientes.paneles;
 
 import com.umg.curso.controldepacientes.Controller.PacienteController;
 import com.umg.curso.controldepacientes.Modelo.Paciente;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 
 
 public class Ingresar extends javax.swing.JPanel implements ActionListener {
@@ -12,6 +13,7 @@ public class Ingresar extends javax.swing.JPanel implements ActionListener {
     
     public Ingresar() {
         initComponents();
+        //se inicializa el boton guardar
         btnAgregar.addActionListener(this);
         
     }
@@ -176,6 +178,12 @@ public class Ingresar extends javax.swing.JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
        if(e.getSource()==btnAgregar){
+           //boton que inicializa un objeto paciente para armar poco a poco el paciente para enviarlo a la contruccion a la base de datos
+           //validar que todos los datos solicitados sean ingresados
+           if(txtID.getText().trim().isEmpty()  || txtNombre.getText().trim().isEmpty() || txtApellidos.getText().trim().isEmpty() || txtEdad.getText().trim().isEmpty() || txtNumero.getText().trim().isEmpty() || txtDireccion.getText().trim().isEmpty() || txtEnfermedad.getText().trim().isEmpty() || txtIngreso.getText().trim().isEmpty()){
+           
+           JOptionPane.showMessageDialog(null, "Datos incompletos recuerde llenar todos los campos ");
+           }else{
            Paciente paciente= new Paciente();
            PacienteController controlador = new PacienteController();
            paciente.setID(Integer.parseInt(txtID.getText()));
@@ -186,10 +194,13 @@ public class Ingresar extends javax.swing.JPanel implements ActionListener {
            paciente.setDireccion(txtDireccion.getText());
            paciente.setEnfermedad(txtEnfermedad.getText());
            paciente.setIngreso(txtIngreso.getText());
-           controlador.Guardar(paciente);
-           if(true){
+           boolean respuesta =controlador.Guardar(paciente);
+           if(respuesta=true){
                Limpiar();
            }
+           }
+           
+           
            
            
            
@@ -197,6 +208,7 @@ public class Ingresar extends javax.swing.JPanel implements ActionListener {
     }
     
     public void Limpiar(){
+        //funcion que limpia todos los textfield
         txtID.setText("");
         txtNombre.setText("");
         txtApellidos.setText("");

@@ -93,11 +93,12 @@ public class PacienteController implements CPacientes  {
     
     
     @Override
-    public boolean Eliminar(int id_paciente) {
+    public boolean EliminarCita(int id_cita) {
        try{
            conexion = new PConexion();
+           conexion.establecerConexion();
            
-           if(conexion.Eliminar(id_paciente))
+           if(conexion.EliminarCita(id_cita))
            {
              return true;
            }
@@ -252,6 +253,35 @@ public class PacienteController implements CPacientes  {
         }
         
         return respuesta;
+    }
+    
+    
+        @Override
+    public void ConsultarAntecedentes(DefaultTableModel modelo, int id_paciente) {
+        
+        try {
+            conexion = new PConexion();
+            conexion.establecerConexion();
+            conexion.ConsultarAntecedentes(modelo, id_paciente);
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(PacienteController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         
+    }
+    
+    @Override
+    public void ConsultarAltas(DefaultTableModel modelo) {
+        
+        try {
+            conexion = new PConexion();
+            conexion.establecerConexion();
+            conexion.ConsultarAltas(modelo);
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(PacienteController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         
     }
     
     

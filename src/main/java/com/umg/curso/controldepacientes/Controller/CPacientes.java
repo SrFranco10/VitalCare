@@ -16,7 +16,7 @@ public interface CPacientes {
     
     public boolean Actualizar(Paciente paciente, int id_paciente);
 
-    public boolean Eliminar(int id_paciente);
+    public boolean EliminarCita(int id_paciente);
 
     public void Consultar(DefaultTableModel modelo);
 
@@ -35,5 +35,9 @@ public interface CPacientes {
      public void LlenarboxP(JComboBox paramPacienteBox);
      
      public boolean Reingreso(Paciente paciente, int id_paciente);
+     
+     public void ConsultarAntecedentes(DefaultTableModel modelo, int id_paciente);
+     
+     public void ConsultarAltas(DefaultTableModel modelo);
 
 }

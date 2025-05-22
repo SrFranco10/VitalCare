@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
+//patalla donde podemos dar de alta al paciente ya atendido
 package com.umg.curso.controldepacientes.paneles;
 
 import com.umg.curso.controldepacientes.Controller.PacienteController;
@@ -21,8 +18,17 @@ public class ReingresoPaciente extends javax.swing.JPanel implements ActionListe
     
     public ReingresoPaciente() {
         initComponents();
+        //se inicializan los botones
         btnBuscar.addActionListener(this);
         btnReingresar.addActionListener(this);
+        btnReingresar.setEnabled(false);
+        txtNombre.setEnabled(false);
+        txtApellidos.setEnabled(false);
+        txtEdad.setEnabled(false);
+        txtNumero.setEnabled(false);
+        txtEnfermedad.setEnabled(false);
+        txtDireccion.setEnabled(false);
+        txtIngreso.setEnabled(false);
     }
 
     
@@ -182,21 +188,35 @@ public class ReingresoPaciente extends javax.swing.JPanel implements ActionListe
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == btnBuscar) {
             try {
+                //se toma el ID del paciente y se almacena en una variable
                 int id_paciente = Integer.parseInt(txtID.getText());
+                //se inicializa pconexion para iniciar conexion con la base de datos 
                 PConexion controlador = new PConexion();
                 controlador.establecerConexion();
+                //se inicia el metodo de buscar el paciente para obtener los datos y se crea un objeto donde se almacenan 
                 Paciente paciente = (Paciente) controlador.ConsultarPaciente(id_paciente);
 
                 if (paciente != null) {
+                    //se colocan la informacion extraida de la base de datos para su vizualizacion 
                     txtNombre.setText(paciente.getNombres());
                     txtApellidos.setText(paciente.getApellidos());
                     txtEdad.setText(String.valueOf(paciente.getEdad()));
                     txtNumero.setText(String.valueOf(paciente.getNumero()));
                     txtDireccion.setText(paciente.getDireccion());
+                    txtNombre.setEnabled(true);
+                    txtApellidos.setEnabled(true);
+                    txtEdad.setEnabled(true);
+                    txtNumero.setEnabled(true);
+                    txtDireccion.setEnabled(true);
+                    btnReingresar.setEnabled(true);
+                    txtEnfermedad.setEnabled(true);
+                    txtIngreso.setEnabled(true);
+                     JOptionPane.showMessageDialog(null, "Paciente encontrado");
 
                 } else {
                     JOptionPane.showMessageDialog(null, "Paciente no encontrado");
                     txtID.setText("");
+                   
                 }
             } catch (NumberFormatException ex) {
                 JOptionPane.showMessageDialog(null, "ID inválido");
@@ -207,9 +227,13 @@ public class ReingresoPaciente extends javax.swing.JPanel implements ActionListe
         }
         if(e.getSource()==btnReingresar){
             int ID= Integer.parseInt(txtID.getText());
-           //se prepara para dar alta
+           //se prepara para dar alta y alguna modificacion del paciente reingresado
            Paciente paciente= new Paciente();
            PacienteController controlador = new PacienteController();
+           //validacion que los campos de enfermedad y de ingreso no esten vacios
+           if(txtEnfermedad.getText().trim().isEmpty() || txtIngreso.getText().trim().isEmpty()){
+               JOptionPane.showMessageDialog(null, "Datos incompletos recuerde llenar todos los campos ");
+           }else{
            paciente.setNombres(txtNombre.getText());
            paciente.setApellidos(txtApellidos.getText());
            paciente.setEdad(Integer.parseInt(txtEdad.getText()));
@@ -218,6 +242,6 @@ public class ReingresoPaciente extends javax.swing.JPanel implements ActionListe
            paciente.setEnfermedad(txtEnfermedad.getText());
            paciente.setIngreso(txtIngreso.getText());
            controlador.Reingreso(paciente,ID);
-        }
+           }}
     }
 }

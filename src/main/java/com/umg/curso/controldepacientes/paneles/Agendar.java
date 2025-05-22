@@ -107,7 +107,7 @@ public class Agendar extends javax.swing.JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == btnRegistrar) {
             //Se realiza la comprobacion que se selecciono un paciente y doctor
-            if ("<Seleccione un Paciente>".equals(boxPacientes.getSelectedItem()) && "<Asigne un Doctor>".equals(boxDoctores.getSelectedItem())) {
+            if ("<Seleccione un Paciente>".equals(boxPacientes.getSelectedItem()) || boxDoctores.getSelectedIndex()==0) {
                 JOptionPane.showMessageDialog(null, "Seleccione un Doctor y Paciente");
             } else {
                 //se llama el metodo agregar cita
