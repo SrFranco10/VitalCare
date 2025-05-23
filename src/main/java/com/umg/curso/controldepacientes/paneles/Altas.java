@@ -7,6 +7,7 @@ import com.umg.curso.controldepacientes.Vista.Doctores.FmrAntecedentes;
 import com.umg.curso.controldepacientes.sql.PConexion;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JFileChooser;
 import javax.swing.table.DefaultTableModel;
 
 public class Altas extends javax.swing.JPanel implements ActionListener {
@@ -22,8 +23,9 @@ public class Altas extends javax.swing.JPanel implements ActionListener {
         //se llama el metodo para mostrar los antecedentes del paciente en la tabla
         controlador.ConsultarAltas(modelo);
 
-        //se inicializa el boton antecedente
+        //se inicializa el boton antecedente y generar reporte
         btnAntecedentes.addActionListener(this);
+        btnGenerarReporte.addActionListener(this);
     }
 
     @SuppressWarnings("unchecked")
@@ -35,6 +37,7 @@ public class Altas extends javax.swing.JPanel implements ActionListener {
         jScrollPane1 = new javax.swing.JScrollPane();
         TableA = new javax.swing.JTable();
         btnAntecedentes = new javax.swing.JButton();
+        btnGenerarReporte = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(746, 470));
 
@@ -62,6 +65,8 @@ public class Altas extends javax.swing.JPanel implements ActionListener {
 
         btnAntecedentes.setText("Antecedentes");
 
+        btnGenerarReporte.setText("Generar Reporte");
+
         javax.swing.GroupLayout backgroundLayout = new javax.swing.GroupLayout(background);
         background.setLayout(backgroundLayout);
         backgroundLayout.setHorizontalGroup(
@@ -76,8 +81,10 @@ public class Altas extends javax.swing.JPanel implements ActionListener {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 664, Short.MAX_VALUE)))
                 .addGap(56, 56, 56))
             .addGroup(backgroundLayout.createSequentialGroup()
-                .addGap(313, 313, 313)
+                .addGap(262, 262, 262)
                 .addComponent(btnAntecedentes)
+                .addGap(31, 31, 31)
+                .addComponent(btnGenerarReporte)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         backgroundLayout.setVerticalGroup(
@@ -88,7 +95,9 @@ public class Altas extends javax.swing.JPanel implements ActionListener {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnAntecedentes)
+                .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAntecedentes)
+                    .addComponent(btnGenerarReporte))
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
@@ -101,7 +110,7 @@ public class Altas extends javax.swing.JPanel implements ActionListener {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 474, Short.MAX_VALUE)
+                .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(0, 0, 0))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -111,6 +120,7 @@ public class Altas extends javax.swing.JPanel implements ActionListener {
     private javax.swing.JTable TableA;
     private javax.swing.JPanel background;
     private javax.swing.JButton btnAntecedentes;
+    private javax.swing.JButton btnGenerarReporte;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel tituloAltas;
     // End of variables declaration//GEN-END:variables
@@ -124,6 +134,17 @@ public class Altas extends javax.swing.JPanel implements ActionListener {
             FmrAntecedentes antecedentes = new FmrAntecedentes(datos);
             antecedentes.setBounds(0, 0, 900, 600);
             antecedentes.setVisible(true);
+        }
+        if(e.getSource()== btnGenerarReporte){
+            JFileChooser fileChooser = new JFileChooser();
+            fileChooser.setDialogTitle("Guardar reporte como...");
+            int userSelection = fileChooser.showSaveDialog(null);
+
+            if (userSelection == JFileChooser.APPROVE_OPTION) {
+                PacienteController controlador = new PacienteController();
+                String ruta = fileChooser.getSelectedFile().getAbsolutePath() + ".pdf";
+                controlador.exportarTablaAPDF(TableA, ruta, "Reporte Altas");
+            }
         }
     }
 }

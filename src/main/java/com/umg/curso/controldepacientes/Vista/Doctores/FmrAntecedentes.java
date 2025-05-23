@@ -7,24 +7,27 @@ package com.umg.curso.controldepacientes.Vista.Doctores;
 import com.umg.curso.controldepacientes.Controller.PacienteController;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JFileChooser;
 import javax.swing.table.DefaultTableModel;
 
 
 public class FmrAntecedentes extends javax.swing.JFrame implements ActionListener {
 
-  
+    PacienteController controlador = new PacienteController();
+    String Nombre;
     public FmrAntecedentes(Object[] datos) {
         initComponents();
         //se asigna el id del paciente selecionado para hacer la consulta
         int id_paciente = Integer.parseInt(datos[0].toString());
         //se hace la inicializacion del controlador para llamar la funcion que hace la consulta y la muestra en la tabla de antecedentes 
-        PacienteController controlador = new PacienteController();
+        Nombre =datos[1].toString();
         //se establece un modelo a la tabla de antecedentes 
         DefaultTableModel modelo = (DefaultTableModel) TableA.getModel();
         controlador.ConsultarAntecedentes(modelo, id_paciente );
         
         //se inicializa el boton 
         btnSalir.addActionListener(this);
+        btnGenerarReporte.addActionListener(this);
         
         //se configura boton de salida para que se vea opaco (estetica)
         btnSalir.setOpaque(false);
@@ -45,6 +48,7 @@ public class FmrAntecedentes extends javax.swing.JFrame implements ActionListene
         jScrollPane1 = new javax.swing.JScrollPane();
         TableA = new javax.swing.JTable();
         btnSalir = new javax.swing.JButton();
+        btnGenerarReporte = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -81,6 +85,9 @@ public class FmrAntecedentes extends javax.swing.JFrame implements ActionListene
         btnSalir.setIcon(new javax.swing.ImageIcon("C:\\Users\\franc\\OneDrive\\Escritorio\\Semestre 5\\Programas\\Imagenes Proyecto\\boton-de-flecha-izquierda-del-teclado.png")); // NOI18N
         btnSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         background.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 30, 30));
+
+        btnGenerarReporte.setText("Generar Reporte");
+        background.add(btnGenerarReporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 560, -1, -1));
 
         getContentPane().add(background);
         background.setBounds(0, 0, 900, 600);
@@ -130,6 +137,7 @@ public class FmrAntecedentes extends javax.swing.JFrame implements ActionListene
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable TableA;
     private javax.swing.JPanel background;
+    private javax.swing.JButton btnGenerarReporte;
     private javax.swing.JButton btnSalir;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel tituloPacientes;
@@ -141,5 +149,15 @@ public class FmrAntecedentes extends javax.swing.JFrame implements ActionListene
             //boton de salida cierra la ventana Antecedentes
             this.dispose();
         }
+         if(e.getSource()==btnGenerarReporte){
+             JFileChooser fileChooser = new JFileChooser();
+            fileChooser.setDialogTitle("Guardar reporte como...");
+            int userSelection = fileChooser.showSaveDialog(null);
+
+            if (userSelection == JFileChooser.APPROVE_OPTION) {
+                String ruta = fileChooser.getSelectedFile().getAbsolutePath() + ".pdf";
+                controlador.exportarTablaAPDF(TableA, ruta, "Reporte Antecedentes del Paciente "+ Nombre);
+            }
+         }
     }
 }

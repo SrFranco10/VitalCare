@@ -5,6 +5,7 @@ import com.umg.curso.controldepacientes.Controller.PacienteController;
 import com.umg.curso.controldepacientes.sql.PConexion;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -21,6 +22,7 @@ public class Citas extends javax.swing.JPanel implements ActionListener {
         
         //se inicializa el boton 
         btnCita.addActionListener(this);
+        btnGenerarReporte.addActionListener(this);
     }
 
    
@@ -33,6 +35,7 @@ public class Citas extends javax.swing.JPanel implements ActionListener {
         jScrollPane1 = new javax.swing.JScrollPane();
         TableC = new javax.swing.JTable();
         btnCita = new javax.swing.JButton();
+        btnGenerarReporte = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(746, 470));
         setLayout(null);
@@ -69,7 +72,11 @@ public class Citas extends javax.swing.JPanel implements ActionListener {
 
         btnCita.setText("Cita atendida");
         background.add(btnCita);
-        btnCita.setBounds(280, 490, 120, 23);
+        btnCita.setBounds(200, 490, 120, 23);
+
+        btnGenerarReporte.setText("Generar Reporte");
+        background.add(btnGenerarReporte);
+        btnGenerarReporte.setBounds(350, 490, 130, 23);
 
         add(background);
         background.setBounds(0, 0, 720, 530);
@@ -84,6 +91,7 @@ public class Citas extends javax.swing.JPanel implements ActionListener {
     private javax.swing.JTable TableC;
     private javax.swing.JPanel background;
     private javax.swing.JButton btnCita;
+    private javax.swing.JButton btnGenerarReporte;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel tituloCitas;
     // End of variables declaration//GEN-END:variables
@@ -106,5 +114,17 @@ public class Citas extends javax.swing.JPanel implements ActionListener {
             }
             
         }
+        if(e.getSource()==btnGenerarReporte){
+             
+            JFileChooser fileChooser = new JFileChooser();
+            fileChooser.setDialogTitle("Guardar reporte como...");
+            int userSelection = fileChooser.showSaveDialog(null);
+
+            if (userSelection == JFileChooser.APPROVE_OPTION) {
+                String ruta = fileChooser.getSelectedFile().getAbsolutePath() + ".pdf";
+                controlador.exportarTablaAPDF(TableC, ruta, "Reporte Citas");
+            }
+        }
+        
     }
 }
