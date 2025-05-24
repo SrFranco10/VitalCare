@@ -13,6 +13,7 @@ public class darAlta extends javax.swing.JFrame implements ActionListener {
     PacienteController controlador = new PacienteController();
 
     public darAlta(Object[] datos) {
+        setUndecorated(true);
 
         initComponents();
         //se llena los campos con la informacion traida de la tabla
@@ -67,50 +68,75 @@ public class darAlta extends javax.swing.JFrame implements ActionListener {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         background.setBackground(new java.awt.Color(255, 255, 255));
+        background.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         background.setPreferredSize(new java.awt.Dimension(746, 470));
-        background.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        background.setLayout(null);
 
-        tituloPacientes.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
-        tituloPacientes.setText("Dar de Alta al Paciente");
-        background.add(tituloPacientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 10, 366, -1));
+        tituloPacientes.setFont(new java.awt.Font("Roboto Medium", 1, 24)); // NOI18N
+        tituloPacientes.setForeground(new java.awt.Color(68, 179, 216));
+        tituloPacientes.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        tituloPacientes.setText("DAR DE ALTA AL PACIENTE");
+        background.add(tituloPacientes);
+        tituloPacientes.setBounds(290, 20, 366, 32);
 
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Nombre del Paciente");
-        background.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 110, -1, -1));
+        background.add(jLabel1);
+        jLabel1.setBounds(220, 110, 130, 16);
 
-        jLabel2.setText("Id ");
-        background.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 70, -1, -1));
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setText("ID");
+        background.add(jLabel2);
+        jLabel2.setBounds(220, 70, 11, 16);
 
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Enfermedad");
-        background.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, -1, -1));
+        background.add(jLabel3);
+        jLabel3.setBounds(220, 140, 80, 16);
 
-        jLabel4.setText("Doctor que Atendio");
-        background.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 170, -1, -1));
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setText("Doctor que Atendió");
+        background.add(jLabel4);
+        jLabel4.setBounds(220, 170, 120, 16);
 
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Fecha de Ingreso");
-        background.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 200, -1, -1));
+        background.add(jLabel5);
+        jLabel5.setBounds(220, 200, 110, 16);
 
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Descripcion");
-        background.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 240, -1, -1));
-        background.add(txtId, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 70, 180, -1));
-        background.add(txtEnfermedad, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 180, -1));
-        background.add(txtDoctor, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 170, 180, -1));
-        background.add(txtFechaIngreso, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 200, 180, -1));
+        background.add(jLabel6);
+        jLabel6.setBounds(220, 240, 70, 16);
+        background.add(txtId);
+        txtId.setBounds(380, 70, 180, 22);
+        background.add(txtEnfermedad);
+        txtEnfermedad.setBounds(380, 140, 180, 22);
+        background.add(txtDoctor);
+        txtDoctor.setBounds(380, 170, 180, 22);
+        background.add(txtFechaIngreso);
+        txtFechaIngreso.setBounds(380, 200, 180, 22);
 
         txtDescripcion.setColumns(20);
         txtDescripcion.setRows(5);
         jScrollPane1.setViewportView(txtDescripcion);
 
-        background.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 240, 390, 150));
+        background.add(jScrollPane1);
+        jScrollPane1.setBounds(320, 240, 390, 150);
 
         txtNombre.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        background.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, 180, -1));
+        background.add(txtNombre);
+        txtNombre.setBounds(380, 110, 180, 22);
 
-        btnDarAlta.setText("Dar Alta");
-        background.add(btnDarAlta, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 470, -1, -1));
+        btnDarAlta.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        btnDarAlta.setText("Dar de Alta");
+        background.add(btnDarAlta);
+        btnDarAlta.setBounds(420, 470, 120, 24);
 
         btnSalir.setIcon(new javax.swing.ImageIcon("C:\\Users\\franc\\OneDrive\\Escritorio\\Semestre 5\\Programas\\Imagenes Proyecto\\boton-de-flecha-izquierda-del-teclado.png")); // NOI18N
         btnSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        background.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+        background.add(btnSalir);
+        btnSalir.setBounds(10, 10, 38, 39);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

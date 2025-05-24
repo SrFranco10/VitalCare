@@ -22,8 +22,11 @@ public class Ingresar extends javax.swing.JPanel implements ActionListener {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         background = new javax.swing.JPanel();
+        tituloIngreso = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
         nombre = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
         fecha = new javax.swing.JLabel();
@@ -41,7 +44,6 @@ public class Ingresar extends javax.swing.JPanel implements ActionListener {
         direccion = new javax.swing.JLabel();
         txtDireccion = new javax.swing.JTextField();
         jSeparator3 = new javax.swing.JSeparator();
-        tituloIngreso = new javax.swing.JLabel();
         btnAgregar = new javax.swing.JButton();
         jSeparator7 = new javax.swing.JSeparator();
         jSeparator10 = new javax.swing.JSeparator();
@@ -52,96 +54,307 @@ public class Ingresar extends javax.swing.JPanel implements ActionListener {
         jSeparator15 = new javax.swing.JSeparator();
 
         setPreferredSize(new java.awt.Dimension(746, 470));
-        setLayout(null);
 
         background.setBackground(new java.awt.Color(255, 255, 255));
+        background.setForeground(new java.awt.Color(0, 0, 0));
         background.setPreferredSize(new java.awt.Dimension(746, 470));
-        background.setLayout(null);
+
+        tituloIngreso.setFont(new java.awt.Font("Bahnschrift", 1, 24)); // NOI18N
+        tituloIngreso.setForeground(new java.awt.Color(0, 26, 94));
+        tituloIngreso.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        tituloIngreso.setText("REGISTRO DE PACIENTE");
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(new java.awt.GridBagLayout());
 
         nombre.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
+        nombre.setForeground(new java.awt.Color(0, 0, 0));
         nombre.setText("Nombre");
-        background.add(nombre);
-        nombre.setBounds(90, 100, 72, 19);
-        background.add(txtNombre);
-        txtNombre.setBounds(350, 100, 212, 22);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.ipadx = 23;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(7, 120, 0, 0);
+        jPanel1.add(nombre, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 8;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridwidth = 11;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = 166;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(7, 110, 0, 71);
+        jPanel1.add(txtNombre, gridBagConstraints);
 
         fecha.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
-        fecha.setText("Fecha de ingreso (ingresar manualmente)");
-        background.add(fecha);
-        fecha.setBounds(90, 340, 266, 19);
-        background.add(txtIngreso);
-        txtIngreso.setBounds(380, 340, 180, 22);
+        fecha.setForeground(new java.awt.Color(0, 0, 0));
+        fecha.setText("Fecha de Ingreso ");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 28;
+        gridBagConstraints.gridwidth = 7;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(7, 120, 0, 0);
+        jPanel1.add(fecha, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 8;
+        gridBagConstraints.gridy = 28;
+        gridBagConstraints.gridwidth = 11;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = 136;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(7, 140, 0, 71);
+        jPanel1.add(txtIngreso, gridBagConstraints);
 
         motivoIngreso.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
+        motivoIngreso.setForeground(new java.awt.Color(0, 0, 0));
         motivoIngreso.setText("Enfermedad");
-        background.add(motivoIngreso);
-        motivoIngreso.setBounds(90, 300, 112, 19);
-        background.add(txtEnfermedad);
-        txtEnfermedad.setBounds(350, 300, 210, 22);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 24;
+        gridBagConstraints.gridwidth = 6;
+        gridBagConstraints.ipadx = 35;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(7, 120, 0, 0);
+        jPanel1.add(motivoIngreso, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 8;
+        gridBagConstraints.gridy = 24;
+        gridBagConstraints.gridwidth = 11;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = 166;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(7, 110, 0, 71);
+        jPanel1.add(txtEnfermedad, gridBagConstraints);
 
         id.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
-        id.setText("id");
-        background.add(id);
-        id.setBounds(90, 60, 11, 19);
-        background.add(txtID);
-        txtID.setBounds(350, 60, 210, 22);
+        id.setForeground(new java.awt.Color(0, 0, 0));
+        id.setText("ID");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(30, 120, 0, 0);
+        jPanel1.add(id, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 8;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 11;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = 166;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(30, 110, 0, 71);
+        jPanel1.add(txtID, gridBagConstraints);
 
         apellidos.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
+        apellidos.setForeground(new java.awt.Color(0, 0, 0));
         apellidos.setText("Apellidos");
-        background.add(apellidos);
-        apellidos.setBounds(90, 140, 60, 19);
-        background.add(txtApellidos);
-        txtApellidos.setBounds(350, 140, 212, 22);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 8;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.ipadx = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(7, 120, 0, 0);
+        jPanel1.add(apellidos, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 8;
+        gridBagConstraints.gridy = 8;
+        gridBagConstraints.gridwidth = 11;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = 166;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(7, 110, 0, 71);
+        jPanel1.add(txtApellidos, gridBagConstraints);
 
         edad.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
+        edad.setForeground(new java.awt.Color(0, 0, 0));
         edad.setText("Edad");
-        background.add(edad);
-        edad.setBounds(90, 180, 47, 19);
-        background.add(txtEdad);
-        txtEdad.setBounds(350, 180, 212, 22);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 12;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.ipadx = 14;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(7, 120, 0, 0);
+        jPanel1.add(edad, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 8;
+        gridBagConstraints.gridy = 12;
+        gridBagConstraints.gridwidth = 11;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = 166;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(7, 110, 0, 71);
+        jPanel1.add(txtEdad, gridBagConstraints);
 
         Ntelefono.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
-        Ntelefono.setText("Numero Telefonico");
-        background.add(Ntelefono);
-        Ntelefono.setBounds(90, 220, 150, 19);
-        background.add(txtNumero);
-        txtNumero.setBounds(350, 220, 212, 22);
+        Ntelefono.setForeground(new java.awt.Color(0, 0, 0));
+        Ntelefono.setText("Número Telefónico");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 16;
+        gridBagConstraints.gridwidth = 8;
+        gridBagConstraints.ipadx = 31;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(7, 120, 0, 0);
+        jPanel1.add(Ntelefono, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 8;
+        gridBagConstraints.gridy = 16;
+        gridBagConstraints.gridwidth = 11;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = 166;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(7, 110, 0, 71);
+        jPanel1.add(txtNumero, gridBagConstraints);
 
         direccion.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
-        direccion.setText("Direccion ");
-        background.add(direccion);
-        direccion.setBounds(90, 260, 80, 19);
-        background.add(txtDireccion);
-        txtDireccion.setBounds(350, 260, 210, 22);
-        background.add(jSeparator3);
-        jSeparator3.setBounds(90, 360, 474, 13);
+        direccion.setForeground(new java.awt.Color(0, 0, 0));
+        direccion.setText("Dirección ");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 20;
+        gridBagConstraints.gridwidth = 5;
+        gridBagConstraints.ipadx = 17;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(7, 120, 0, 0);
+        jPanel1.add(direccion, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 8;
+        gridBagConstraints.gridy = 20;
+        gridBagConstraints.gridwidth = 11;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = 166;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(7, 110, 0, 71);
+        jPanel1.add(txtDireccion, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 29;
+        gridBagConstraints.gridwidth = 10;
+        gridBagConstraints.gridheight = 3;
+        gridBagConstraints.ipadx = 473;
+        gridBagConstraints.ipady = 12;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(1, 120, 0, 0);
+        jPanel1.add(jSeparator3, gridBagConstraints);
 
-        tituloIngreso.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
-        tituloIngreso.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        tituloIngreso.setText("DEMO Ingreso de pacientes");
-        background.add(tituloIngreso);
-        tituloIngreso.setBounds(100, 20, 560, 19);
+        btnAgregar.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        btnAgregar.setText("Registrar ");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 8;
+        gridBagConstraints.gridy = 32;
+        gridBagConstraints.ipadx = 42;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(27, 10, 36, 0);
+        jPanel1.add(btnAgregar, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 10;
+        gridBagConstraints.gridheight = 3;
+        gridBagConstraints.ipadx = 473;
+        gridBagConstraints.ipady = 12;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(1, 120, 0, 0);
+        jPanel1.add(jSeparator7, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridwidth = 10;
+        gridBagConstraints.gridheight = 3;
+        gridBagConstraints.ipadx = 473;
+        gridBagConstraints.ipady = 12;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(1, 120, 0, 0);
+        jPanel1.add(jSeparator10, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 9;
+        gridBagConstraints.gridwidth = 10;
+        gridBagConstraints.gridheight = 3;
+        gridBagConstraints.ipadx = 473;
+        gridBagConstraints.ipady = 12;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(1, 120, 0, 0);
+        jPanel1.add(jSeparator11, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 13;
+        gridBagConstraints.gridwidth = 10;
+        gridBagConstraints.gridheight = 3;
+        gridBagConstraints.ipadx = 473;
+        gridBagConstraints.ipady = 12;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(1, 120, 0, 0);
+        jPanel1.add(jSeparator12, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 17;
+        gridBagConstraints.gridwidth = 10;
+        gridBagConstraints.gridheight = 3;
+        gridBagConstraints.ipadx = 473;
+        gridBagConstraints.ipady = 12;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(1, 120, 0, 0);
+        jPanel1.add(jSeparator13, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 21;
+        gridBagConstraints.gridwidth = 10;
+        gridBagConstraints.gridheight = 3;
+        gridBagConstraints.ipadx = 473;
+        gridBagConstraints.ipady = 12;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(1, 120, 0, 0);
+        jPanel1.add(jSeparator14, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 25;
+        gridBagConstraints.gridwidth = 10;
+        gridBagConstraints.gridheight = 3;
+        gridBagConstraints.ipadx = 473;
+        gridBagConstraints.ipady = 12;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(1, 120, 0, 0);
+        jPanel1.add(jSeparator15, gridBagConstraints);
 
-        btnAgregar.setText("Ingresar Paciente");
-        background.add(btnAgregar);
-        btnAgregar.setBounds(310, 390, 140, 23);
-        background.add(jSeparator7);
-        jSeparator7.setBounds(90, 80, 474, 13);
-        background.add(jSeparator10);
-        jSeparator10.setBounds(90, 120, 474, 13);
-        background.add(jSeparator11);
-        jSeparator11.setBounds(90, 160, 474, 13);
-        background.add(jSeparator12);
-        jSeparator12.setBounds(90, 200, 474, 13);
-        background.add(jSeparator13);
-        jSeparator13.setBounds(90, 240, 474, 13);
-        background.add(jSeparator14);
-        jSeparator14.setBounds(90, 280, 474, 13);
-        background.add(jSeparator15);
-        jSeparator15.setBounds(90, 320, 474, 13);
+        javax.swing.GroupLayout backgroundLayout = new javax.swing.GroupLayout(background);
+        background.setLayout(backgroundLayout);
+        backgroundLayout.setHorizontalGroup(
+            backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(backgroundLayout.createSequentialGroup()
+                .addGap(100, 100, 100)
+                .addComponent(tituloIngreso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(50, 50, 50))
+            .addGroup(backgroundLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1215, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        backgroundLayout.setVerticalGroup(
+            backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(backgroundLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(tituloIngreso)
+                .addGap(45, 45, 45)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(276, 276, 276))
+        );
 
-        add(background);
-        background.setBounds(0, 0, 720, 530);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 1227, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 817, Short.MAX_VALUE)
+        );
     }// </editor-fold>//GEN-END:initComponents
 
 
@@ -154,6 +367,7 @@ public class Ingresar extends javax.swing.JPanel implements ActionListener {
     private javax.swing.JLabel edad;
     private javax.swing.JLabel fecha;
     private javax.swing.JLabel id;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator10;
     private javax.swing.JSeparator jSeparator11;
     private javax.swing.JSeparator jSeparator12;

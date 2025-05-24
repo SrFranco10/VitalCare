@@ -42,11 +42,6 @@
       </Layout>
       <SubComponents>
         <Component class="javax.swing.JLabel" name="Logo">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\franc\OneDrive\Escritorio\Semestre 5\Programas\Imagenes Proyecto\vital care Cuidado y salud.png"/>
-            </Property>
-          </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="660" y="120" width="220" height="240"/>

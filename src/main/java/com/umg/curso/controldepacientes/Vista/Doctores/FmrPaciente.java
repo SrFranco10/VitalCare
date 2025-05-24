@@ -15,6 +15,7 @@ public class FmrPaciente extends javax.swing.JFrame implements ActionListener {
     int Id_paciente;
     String Estado;
     public FmrPaciente(Object[] datos) {
+        setUndecorated(true);
         initComponents();
         btnModificar.addActionListener(this);
         //Llenamos el comboBox de doctores
@@ -43,6 +44,10 @@ public class FmrPaciente extends javax.swing.JFrame implements ActionListener {
         btnSalir.setBorderPainted(false);
         btnSalir.setFocusPainted(false);
         btnSalir.addActionListener(this);
+        if(boxDoc.getSelectedItem().toString().equals("<Falta  Asignar>")){
+            boxDoc.setEnabled(false);
+        }
+        
     }
     
     
@@ -50,106 +55,151 @@ public class FmrPaciente extends javax.swing.JFrame implements ActionListener {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        background = new javax.swing.JPanel();
+        nombre = new javax.swing.JLabel();
         txtNombreCompleto = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        txtEdad = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        txtNumero = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        txtApellidos = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        txtDireccion = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        txtEnfermedad = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
+        fecha = new javax.swing.JLabel();
         txtIngreso = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
+        motivoIngreso = new javax.swing.JLabel();
+        txtEnfermedad = new javax.swing.JTextField();
+        apellidos = new javax.swing.JLabel();
+        txtApellidos = new javax.swing.JTextField();
+        edad = new javax.swing.JLabel();
+        txtEdad = new javax.swing.JTextField();
+        Ntelefono = new javax.swing.JLabel();
+        txtNumero = new javax.swing.JTextField();
+        direccion = new javax.swing.JLabel();
+        txtDireccion = new javax.swing.JTextField();
+        jSeparator3 = new javax.swing.JSeparator();
+        tituloIngreso = new javax.swing.JLabel();
         btnModificar = new javax.swing.JButton();
-        jLabel11 = new javax.swing.JLabel();
+        jSeparator10 = new javax.swing.JSeparator();
+        jSeparator11 = new javax.swing.JSeparator();
+        jSeparator12 = new javax.swing.JSeparator();
+        jSeparator13 = new javax.swing.JSeparator();
+        jSeparator14 = new javax.swing.JSeparator();
+        jSeparator15 = new javax.swing.JSeparator();
         btnSalir = new javax.swing.JButton();
+        motivoIngreso1 = new javax.swing.JLabel();
+        jSeparator16 = new javax.swing.JSeparator();
         boxDoc = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setLayout(null);
-        jPanel1.add(txtNombreCompleto);
-        txtNombreCompleto.setBounds(360, 100, 90, 22);
+        background.setBackground(new java.awt.Color(255, 255, 255));
+        background.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        background.setPreferredSize(new java.awt.Dimension(746, 470));
+        background.setLayout(null);
 
-        jLabel3.setText("Edad");
-        jPanel1.add(jLabel3);
-        jLabel3.setBounds(300, 140, 30, 20);
-        jPanel1.add(txtEdad);
-        txtEdad.setBounds(360, 140, 90, 22);
+        nombre.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
+        nombre.setForeground(new java.awt.Color(0, 0, 0));
+        nombre.setText("Nombre");
+        background.add(nombre);
+        nombre.setBounds(220, 100, 72, 19);
+        background.add(txtNombreCompleto);
+        txtNombreCompleto.setBounds(480, 100, 212, 22);
 
-        jLabel4.setText("Numero");
-        jPanel1.add(jLabel4);
-        jLabel4.setBounds(470, 140, 60, 20);
-        jPanel1.add(txtNumero);
-        txtNumero.setBounds(530, 140, 100, 22);
+        fecha.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
+        fecha.setForeground(new java.awt.Color(0, 0, 0));
+        fecha.setText("Fecha de ingreso ");
+        background.add(fecha);
+        fecha.setBounds(220, 380, 240, 19);
+        background.add(txtIngreso);
+        txtIngreso.setBounds(480, 380, 210, 22);
 
-        jLabel5.setText("Apellidos");
-        jPanel1.add(jLabel5);
-        jLabel5.setBounds(470, 100, 60, 20);
-        jPanel1.add(txtApellidos);
-        txtApellidos.setBounds(530, 100, 100, 22);
+        motivoIngreso.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
+        motivoIngreso.setForeground(new java.awt.Color(0, 0, 0));
+        motivoIngreso.setText("Doctor Asignado");
+        background.add(motivoIngreso);
+        motivoIngreso.setBounds(220, 340, 112, 19);
+        background.add(txtEnfermedad);
+        txtEnfermedad.setBounds(480, 300, 210, 22);
 
-        jLabel6.setText("Direccion");
-        jPanel1.add(jLabel6);
-        jLabel6.setBounds(280, 180, 60, 20);
-        jPanel1.add(txtDireccion);
-        txtDireccion.setBounds(360, 180, 90, 22);
+        apellidos.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
+        apellidos.setForeground(new java.awt.Color(0, 0, 0));
+        apellidos.setText("Apellidos");
+        background.add(apellidos);
+        apellidos.setBounds(220, 140, 60, 19);
+        background.add(txtApellidos);
+        txtApellidos.setBounds(480, 140, 212, 22);
 
-        jLabel7.setText("Enfermedad");
-        jPanel1.add(jLabel7);
-        jLabel7.setBounds(470, 180, 70, 20);
-        jPanel1.add(txtEnfermedad);
-        txtEnfermedad.setBounds(540, 180, 90, 22);
+        edad.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
+        edad.setForeground(new java.awt.Color(0, 0, 0));
+        edad.setText("Edad");
+        background.add(edad);
+        edad.setBounds(220, 180, 47, 19);
+        background.add(txtEdad);
+        txtEdad.setBounds(480, 180, 212, 22);
 
-        jLabel8.setText("Doctor");
-        jPanel1.add(jLabel8);
-        jLabel8.setBounds(280, 220, 80, 20);
+        Ntelefono.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
+        Ntelefono.setForeground(new java.awt.Color(0, 0, 0));
+        Ntelefono.setText("Número Telefónico");
+        background.add(Ntelefono);
+        Ntelefono.setBounds(220, 220, 120, 19);
+        background.add(txtNumero);
+        txtNumero.setBounds(480, 220, 212, 22);
 
-        jLabel9.setText("Ingreso");
-        jPanel1.add(jLabel9);
-        jLabel9.setBounds(540, 220, 50, 20);
-        jPanel1.add(txtIngreso);
-        txtIngreso.setBounds(600, 220, 100, 22);
+        direccion.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
+        direccion.setForeground(new java.awt.Color(0, 0, 0));
+        direccion.setText("Dirección ");
+        background.add(direccion);
+        direccion.setBounds(220, 260, 80, 19);
+        background.add(txtDireccion);
+        txtDireccion.setBounds(480, 260, 210, 22);
+        background.add(jSeparator3);
+        jSeparator3.setBounds(220, 400, 474, 13);
 
-        jLabel1.setText("Modificar");
-        jPanel1.add(jLabel1);
-        jLabel1.setBounds(480, 60, 60, 16);
+        tituloIngreso.setFont(new java.awt.Font("Roboto Medium", 1, 24)); // NOI18N
+        tituloIngreso.setForeground(new java.awt.Color(68, 179, 216));
+        tituloIngreso.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        tituloIngreso.setText("MODIFICAR PACIENTE");
+        background.add(tituloIngreso);
+        tituloIngreso.setBounds(220, 30, 560, 32);
 
+        btnModificar.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         btnModificar.setText("Modificar");
-        jPanel1.add(btnModificar);
-        btnModificar.setBounds(470, 400, 100, 23);
-
-        jLabel11.setText("Nombre");
-        jPanel1.add(jLabel11);
-        jLabel11.setBounds(290, 100, 44, 20);
+        background.add(btnModificar);
+        btnModificar.setBounds(430, 470, 140, 24);
+        background.add(jSeparator10);
+        jSeparator10.setBounds(220, 120, 474, 13);
+        background.add(jSeparator11);
+        jSeparator11.setBounds(220, 160, 474, 13);
+        background.add(jSeparator12);
+        jSeparator12.setBounds(220, 200, 474, 13);
+        background.add(jSeparator13);
+        jSeparator13.setBounds(220, 240, 474, 13);
+        background.add(jSeparator14);
+        jSeparator14.setBounds(220, 280, 474, 13);
+        background.add(jSeparator15);
+        jSeparator15.setBounds(220, 360, 474, 13);
 
         btnSalir.setIcon(new javax.swing.ImageIcon("C:\\Users\\franc\\OneDrive\\Escritorio\\Semestre 5\\Programas\\Imagenes Proyecto\\boton-de-flecha-izquierda-del-teclado.png")); // NOI18N
         btnSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(btnSalir);
+        background.add(btnSalir);
         btnSalir.setBounds(10, 10, 40, 40);
 
-        jPanel1.add(boxDoc);
-        boxDoc.setBounds(330, 220, 190, 22);
+        motivoIngreso1.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
+        motivoIngreso1.setForeground(new java.awt.Color(0, 0, 0));
+        motivoIngreso1.setText("Enfermedad");
+        background.add(motivoIngreso1);
+        motivoIngreso1.setBounds(220, 300, 112, 19);
+        background.add(jSeparator16);
+        jSeparator16.setBounds(220, 320, 474, 13);
+
+        background.add(boxDoc);
+        boxDoc.setBounds(480, 340, 210, 22);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 894, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(background, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 900, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 594, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -189,19 +239,27 @@ public class FmrPaciente extends javax.swing.JFrame implements ActionListener {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Ntelefono;
+    private javax.swing.JLabel apellidos;
+    private javax.swing.JPanel background;
     private javax.swing.JComboBox<String> boxDoc;
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnSalir;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel direccion;
+    private javax.swing.JLabel edad;
+    private javax.swing.JLabel fecha;
+    private javax.swing.JSeparator jSeparator10;
+    private javax.swing.JSeparator jSeparator11;
+    private javax.swing.JSeparator jSeparator12;
+    private javax.swing.JSeparator jSeparator13;
+    private javax.swing.JSeparator jSeparator14;
+    private javax.swing.JSeparator jSeparator15;
+    private javax.swing.JSeparator jSeparator16;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JLabel motivoIngreso;
+    private javax.swing.JLabel motivoIngreso1;
+    private javax.swing.JLabel nombre;
+    private javax.swing.JLabel tituloIngreso;
     private javax.swing.JTextField txtApellidos;
     private javax.swing.JTextField txtDireccion;
     private javax.swing.JTextField txtEdad;

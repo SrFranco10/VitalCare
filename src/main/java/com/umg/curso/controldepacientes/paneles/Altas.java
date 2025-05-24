@@ -44,8 +44,10 @@ public class Altas extends javax.swing.JPanel implements ActionListener {
         background.setBackground(new java.awt.Color(255, 255, 255));
         background.setPreferredSize(new java.awt.Dimension(746, 470));
 
-        tituloAltas.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
-        tituloAltas.setText("DEMO Pacientes dados de alta ");
+        tituloAltas.setFont(new java.awt.Font("Bahnschrift", 1, 24)); // NOI18N
+        tituloAltas.setForeground(new java.awt.Color(0, 26, 94));
+        tituloAltas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        tituloAltas.setText("PACIENTES DADOS DE ALTA");
 
         TableA.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -63,8 +65,10 @@ public class Altas extends javax.swing.JPanel implements ActionListener {
             TableA.getColumnModel().getColumn(0).setResizable(false);
         }
 
+        btnAntecedentes.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         btnAntecedentes.setText("Antecedentes");
 
+        btnGenerarReporte.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         btnGenerarReporte.setText("Generar Reporte");
 
         javax.swing.GroupLayout backgroundLayout = new javax.swing.GroupLayout(background);
@@ -72,20 +76,17 @@ public class Altas extends javax.swing.JPanel implements ActionListener {
         backgroundLayout.setHorizontalGroup(
             backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(backgroundLayout.createSequentialGroup()
-                .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(backgroundLayout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addComponent(tituloAltas, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(backgroundLayout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 664, Short.MAX_VALUE)))
-                .addGap(56, 56, 56))
-            .addGroup(backgroundLayout.createSequentialGroup()
                 .addGap(262, 262, 262)
-                .addComponent(btnAntecedentes)
+                .addComponent(btnAntecedentes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(31, 31, 31)
-                .addComponent(btnGenerarReporte)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(btnGenerarReporte, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(236, 236, 236))
+            .addGroup(backgroundLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tituloAltas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1))
+                .addGap(20, 20, 20))
         );
         backgroundLayout.setVerticalGroup(
             backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -93,19 +94,19 @@ public class Altas extends javax.swing.JPanel implements ActionListener {
                 .addGap(16, 16, 16)
                 .addComponent(tituloAltas)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAntecedentes)
                     .addComponent(btnGenerarReporte))
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 795, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -132,7 +133,7 @@ public class Altas extends javax.swing.JPanel implements ActionListener {
             Object[] datos = (Object[]) controlador.SeleccionarPaciente(TableA);
             //se abre la ventana donde se envia los datos del paciente para ser trabajados
             FmrAntecedentes antecedentes = new FmrAntecedentes(datos);
-            antecedentes.setBounds(0, 0, 900, 600);
+            antecedentes.setBounds(400, 300, 900, 600);
             antecedentes.setVisible(true);
         }
         if(e.getSource()== btnGenerarReporte){

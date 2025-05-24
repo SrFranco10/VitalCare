@@ -19,7 +19,7 @@ public class Pacientes extends javax.swing.JPanel implements ActionListener {
 
     public Pacientes() {
         initComponents();
-
+        
         //se inicializa la tabla con un modelo
         DefaultTableModel modelo = (DefaultTableModel) TableP.getModel();
         //se llama la funcion consultar que llenara la tabla de pacientes en atencion 
@@ -46,15 +46,14 @@ public class Pacientes extends javax.swing.JPanel implements ActionListener {
         btnReporte = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(746, 470));
-        setLayout(null);
 
         background.setBackground(new java.awt.Color(255, 255, 255));
         background.setPreferredSize(new java.awt.Dimension(746, 470));
-        background.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        tituloPacientes.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
-        tituloPacientes.setText("DEMO Pacientes ingresados");
-        background.add(tituloPacientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 366, -1));
+        tituloPacientes.setFont(new java.awt.Font("Bahnschrift", 1, 24)); // NOI18N
+        tituloPacientes.setForeground(new java.awt.Color(0, 26, 94));
+        tituloPacientes.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        tituloPacientes.setText("PACIENTES INGRESADOS");
 
         TableP.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -75,22 +74,67 @@ public class Pacientes extends javax.swing.JPanel implements ActionListener {
         });
         jScrollPane1.setViewportView(TableP);
 
-        background.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 700, 440));
+        btnDarAlta.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        btnDarAlta.setText("Dar de Alta");
 
-        btnDarAlta.setText("Dar Alta");
-        background.add(btnDarAlta, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 480, -1, -1));
-
+        btnModificar.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         btnModificar.setText("Modificar");
-        background.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 480, -1, -1));
 
+        btnAntecedentes.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         btnAntecedentes.setText("Antecedentes");
-        background.add(btnAntecedentes, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 480, -1, -1));
 
+        btnReporte.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         btnReporte.setText("Generar Reporte");
-        background.add(btnReporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 480, -1, -1));
 
-        add(background);
-        background.setBounds(0, 0, 720, 530);
+        javax.swing.GroupLayout backgroundLayout = new javax.swing.GroupLayout(background);
+        background.setLayout(backgroundLayout);
+        backgroundLayout.setHorizontalGroup(
+            backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, backgroundLayout.createSequentialGroup()
+                .addGap(151, 151, 151)
+                .addComponent(btnDarAlta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(28, 28, 28)
+                .addComponent(btnModificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(19, 19, 19)
+                .addComponent(btnAntecedentes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(btnReporte, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(134, 134, 134))
+            .addGroup(backgroundLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(tituloPacientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(10, 10, 10))
+            .addGroup(backgroundLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1)
+                .addGap(14, 14, 14))
+        );
+        backgroundLayout.setVerticalGroup(
+            backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(backgroundLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(tituloPacientes)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 435, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnDarAlta)
+                    .addComponent(btnModificar)
+                    .addComponent(btnAntecedentes)
+                    .addComponent(btnReporte))
+                .addGap(19, 19, 19))
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 816, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 530, Short.MAX_VALUE)
+        );
     }// </editor-fold>//GEN-END:initComponents
 
     private void TablePMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablePMouseClicked
@@ -116,20 +160,22 @@ public class Pacientes extends javax.swing.JPanel implements ActionListener {
             //boton que nos llevara a la pantalla para poder dar de alta al paciente 
             Object[] datos = (Object[]) controlador.SeleccionarPaciente(TableP);
             darAlta detalle = new darAlta(datos);
+            detalle.setBounds(400, 300, 900, 600);
             detalle.setVisible(true);
         }
         if (e.getSource() == btnModificar) {
             //boton que nos llevara a la pantalla para poder modificar al paciente 
             Object[] datos = (Object[]) controlador.SeleccionarPaciente(TableP);
-            FmrPaciente detalle = new FmrPaciente(datos);
-            detalle.setVisible(true);
+            FmrPaciente Modificar = new FmrPaciente(datos);
+            Modificar.setBounds(400, 300, 900, 600);
+            Modificar.setVisible(true);
         }
         if (e.getSource() == btnAntecedentes) {
             //boton que nos llevara a la pantalla para poder observar los antecedentes del paciente 
             Object[] datos = (Object[]) controlador.SeleccionarPaciente(TableP);
 
             FmrAntecedentes antecedentes = new FmrAntecedentes(datos);
-            antecedentes.setBounds(0, 0, 900, 600);
+            antecedentes.setBounds(400, 300, 900, 600);
             antecedentes.setVisible(true);
 
         }

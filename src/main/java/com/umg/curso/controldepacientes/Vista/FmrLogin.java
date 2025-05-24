@@ -9,6 +9,7 @@ import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 public class FmrLogin extends javax.swing.JFrame implements MouseListener, MouseMotionListener{
@@ -265,20 +266,20 @@ public class FmrLogin extends javax.swing.JFrame implements MouseListener, Mouse
             System.exit(0);
         } 
         if (e.getSource() == btnLogin) {
-            javax.swing.JOptionPane.showMessageDialog(this, "intento de login con los datos\nUsuario: " + txtUser.getText() + "\nContraseña: " + String.valueOf(txtPassword.getPassword()), "LOGIN", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            
              if (txtUser.getText().equals("Recepcion" ) && txtPassword.getText().equals("Recepcion" )) {
                 FmrRecepción VistaRecepcion = new FmrRecepción();
-                VistaRecepcion.setBounds(0, 0, 1015, 720);
+                VistaRecepcion.setExtendedState(JFrame.MAXIMIZED_BOTH);
                 VistaRecepcion.setVisible(true);
                 this.dispose();
             } else if (txtUser.getText().equals("Doctores") && txtPassword.getText().equals("Doctores")) {
                 FmrDoctor VistaDoctores = new FmrDoctor();
-                VistaDoctores.setBounds(0, 0, 1015, 720);
+                VistaDoctores.setExtendedState(JFrame.MAXIMIZED_BOTH);
                 VistaDoctores.setVisible(true);
                 this.dispose();
             } else if (txtUser.getText().equals("Admin") && txtPassword.getText().equals("Admin")) {
                 FmrAdmin VistaAdmin = new FmrAdmin();
-                VistaAdmin.setBounds(0, 0, 900, 600);
+                VistaAdmin.setExtendedState(JFrame.MAXIMIZED_BOTH);
                 VistaAdmin.setVisible(true);
                 this.dispose();
             }else {

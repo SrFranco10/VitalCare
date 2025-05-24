@@ -16,6 +16,7 @@ public class FmrAntecedentes extends javax.swing.JFrame implements ActionListene
     PacienteController controlador = new PacienteController();
     String Nombre;
     public FmrAntecedentes(Object[] datos) {
+        setUndecorated(true);
         initComponents();
         //se asigna el id del paciente selecionado para hacer la consulta
         int id_paciente = Integer.parseInt(datos[0].toString());
@@ -51,15 +52,15 @@ public class FmrAntecedentes extends javax.swing.JFrame implements ActionListene
         btnGenerarReporte = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(null);
 
         background.setBackground(new java.awt.Color(255, 255, 255));
+        background.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         background.setPreferredSize(new java.awt.Dimension(746, 470));
-        background.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        tituloPacientes.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
-        tituloPacientes.setText("Antecedentes");
-        background.add(tituloPacientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 10, 366, 20));
+        tituloPacientes.setFont(new java.awt.Font("Roboto Medium", 1, 24)); // NOI18N
+        tituloPacientes.setForeground(new java.awt.Color(68, 179, 216));
+        tituloPacientes.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        tituloPacientes.setText("ANTECEDENTES");
 
         TableA.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -80,17 +81,59 @@ public class FmrAntecedentes extends javax.swing.JFrame implements ActionListene
         });
         jScrollPane1.setViewportView(TableA);
 
-        background.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 850, 480));
-
         btnSalir.setIcon(new javax.swing.ImageIcon("C:\\Users\\franc\\OneDrive\\Escritorio\\Semestre 5\\Programas\\Imagenes Proyecto\\boton-de-flecha-izquierda-del-teclado.png")); // NOI18N
         btnSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        background.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 30, 30));
 
+        btnGenerarReporte.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         btnGenerarReporte.setText("Generar Reporte");
-        background.add(btnGenerarReporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 560, -1, -1));
 
-        getContentPane().add(background);
-        background.setBounds(0, 0, 900, 600);
+        javax.swing.GroupLayout backgroundLayout = new javax.swing.GroupLayout(background);
+        background.setLayout(backgroundLayout);
+        backgroundLayout.setHorizontalGroup(
+            backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(backgroundLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(btnSalir)
+                .addGap(241, 241, 241)
+                .addComponent(tituloPacientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(275, 275, 275))
+            .addGroup(backgroundLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 858, Short.MAX_VALUE)
+                .addGap(20, 20, 20))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, backgroundLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnGenerarReporte, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        backgroundLayout.setVerticalGroup(
+            backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(backgroundLayout.createSequentialGroup()
+                .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(backgroundLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(40, 40, 40))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, backgroundLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(tituloPacientes, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 457, Short.MAX_VALUE)
+                .addGap(20, 20, 20)
+                .addComponent(btnGenerarReporte)
+                .addGap(17, 17, 17))
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 900, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

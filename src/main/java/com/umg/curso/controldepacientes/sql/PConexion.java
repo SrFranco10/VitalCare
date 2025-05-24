@@ -31,7 +31,7 @@ public class PConexion {
         try {
             Class.forName("org.postgresql.Driver");
             conectar = DriverManager.getConnection(cadena, Usuario, Contrasenia);
-            JOptionPane.showMessageDialog(null, "Conexion Exitosa");
+            
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "ERROR:" + e.toString());
@@ -301,7 +301,7 @@ public class PConexion {
                                                              c.id_cita AS "Id",
                                                              p."Nombre" || ' ' || p."Apellido" AS "Paciente",
                                                              d."Nombre" || ' ' || d."Apellido" AS "Doctor",
-                                                             c.fecha_hora AS "Fecha_Cita"
+                                                             c.fecha_hora AS "Fecha De Cita"
                                                          FROM 
                                                              public.cita c
                                                          JOIN 
@@ -394,7 +394,7 @@ public class PConexion {
                 update.setInt(1, id_paciente);
                 update.executeUpdate();
 
-                JOptionPane.showMessageDialog(null, "Paciente registrado con éxito");
+                JOptionPane.showMessageDialog(null, "Paciente dado de alta con éxito");
 
             } else {
                 System.out.println("No fue posible dar de alta");
@@ -450,7 +450,7 @@ public class PConexion {
             if (conectar != null) {
                 PreparedStatement st = conectar.prepareStatement("""
                                                                  UPDATE public.pacientes
-                                                                 \tSET "Nombre"=?, "Apellido"=?, "Edad"=?, "Numero"=?, "Direccion"=?, "Enfermedad"=?, "Ingreso"=?, "Estado"=?
+                                                                 \tSET "Nombre"=?, "Apellido"=?, "Edad"=?, "Numero"=?, "Direccion"=?, "Enfermedad"=?, "Ingreso"=?, "Estado"=?, "Id_doctor"=0
                                                                  \tWHERE "ID"=""" + id_paciente + ";");
                 st.setString(1, paciente.getNombres());
                 st.setString(2, paciente.getApellidos());

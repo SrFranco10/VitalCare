@@ -38,16 +38,14 @@ public class Citas extends javax.swing.JPanel implements ActionListener {
         btnGenerarReporte = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(746, 470));
-        setLayout(null);
 
         background.setBackground(new java.awt.Color(255, 255, 255));
         background.setPreferredSize(new java.awt.Dimension(746, 470));
-        background.setLayout(null);
 
-        tituloCitas.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
-        tituloCitas.setText("DEMO Citas pendientes");
-        background.add(tituloCitas);
-        tituloCitas.setBounds(20, 10, 366, 19);
+        tituloCitas.setFont(new java.awt.Font("Bahnschrift", 1, 24)); // NOI18N
+        tituloCitas.setForeground(new java.awt.Color(0, 26, 94));
+        tituloCitas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        tituloCitas.setText("CITAS PENDIENTES");
 
         TableC.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -67,19 +65,53 @@ public class Citas extends javax.swing.JPanel implements ActionListener {
         });
         jScrollPane1.setViewportView(TableC);
 
-        background.add(jScrollPane1);
-        jScrollPane1.setBounds(10, 40, 690, 440);
-
+        btnCita.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         btnCita.setText("Cita atendida");
-        background.add(btnCita);
-        btnCita.setBounds(200, 490, 120, 23);
 
+        btnGenerarReporte.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         btnGenerarReporte.setText("Generar Reporte");
-        background.add(btnGenerarReporte);
-        btnGenerarReporte.setBounds(350, 490, 130, 23);
 
-        add(background);
-        background.setBounds(0, 0, 720, 530);
+        javax.swing.GroupLayout backgroundLayout = new javax.swing.GroupLayout(background);
+        background.setLayout(backgroundLayout);
+        backgroundLayout.setHorizontalGroup(
+            backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(backgroundLayout.createSequentialGroup()
+                .addGap(231, 231, 231)
+                .addComponent(btnCita, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
+                .addGap(33, 33, 33)
+                .addComponent(btnGenerarReporte, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
+                .addGap(206, 206, 206))
+            .addGroup(backgroundLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tituloCitas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1))
+                .addGap(20, 20, 20))
+        );
+        backgroundLayout.setVerticalGroup(
+            backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(backgroundLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(tituloCitas)
+                .addGap(6, 6, 6)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 373, Short.MAX_VALUE)
+                .addGap(10, 10, 10)
+                .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCita)
+                    .addComponent(btnGenerarReporte))
+                .addGap(17, 17, 17))
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(background, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
     }// </editor-fold>//GEN-END:initComponents
 
     private void TableCMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TableCMouseClicked

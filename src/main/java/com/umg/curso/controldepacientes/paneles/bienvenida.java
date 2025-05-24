@@ -27,76 +27,64 @@ public class bienvenida extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         background = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(746, 470));
-        setLayout(null);
 
         background.setBackground(new java.awt.Color(255, 255, 255));
         background.setPreferredSize(new java.awt.Dimension(746, 470));
-        background.setLayout(null);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\franc\\OneDrive\\Escritorio\\Semestre 5\\Programas\\Imagenes Proyecto\\Somos dos estudiantes quienes preocupados por la.png")); // NOI18N
-        background.add(jLabel1);
-        jLabel1.setBounds(0, 0, 375, 530);
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(new java.awt.GridBagLayout());
 
-        jLabel2.setFont(new java.awt.Font("Roboto Black", 0, 12)); // NOI18N
-        jLabel2.setText("Nuestra app aun se encuentra en desarrollo");
-        background.add(jLabel2);
-        jLabel2.setBounds(420, 50, 290, 16);
+        jLabel1.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 48)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setText("BIENVENIDO A VITALCARE ");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.ipady = 7;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(32, 29, 25, 19);
+        jPanel1.add(jLabel1, gridBagConstraints);
 
-        jLabel3.setFont(new java.awt.Font("Roboto Black", 0, 12)); // NOI18N
-        jLabel3.setText("es probable que las fallas y errores resalten a la vista");
-        background.add(jLabel3);
-        jLabel3.setBounds(420, 70, 350, 20);
+        javax.swing.GroupLayout backgroundLayout = new javax.swing.GroupLayout(background);
+        background.setLayout(backgroundLayout);
+        backgroundLayout.setHorizontalGroup(
+            backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, backgroundLayout.createSequentialGroup()
+                .addGap(134, 134, 134)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(75, 75, 75))
+        );
+        backgroundLayout.setVerticalGroup(
+            backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(backgroundLayout.createSequentialGroup()
+                .addGap(134, 134, 134)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(232, 232, 232))
+        );
 
-        jLabel4.setFont(new java.awt.Font("Roboto Black", 0, 12)); // NOI18N
-        jLabel4.setText("sin embargo pedimos paciencia y compresión");
-        background.add(jLabel4);
-        jLabel4.setBounds(420, 100, 300, 16);
-
-        jLabel5.setFont(new java.awt.Font("Roboto Black", 0, 12)); // NOI18N
-        jLabel5.setText("pues grandes actualizaciones vienen en camino.");
-        background.add(jLabel5);
-        jLabel5.setBounds(420, 120, 320, 16);
-
-        jLabel6.setFont(new java.awt.Font("Roboto Black", 0, 12)); // NOI18N
-        jLabel6.setText("Sin mas que decir...");
-        background.add(jLabel6);
-        jLabel6.setBounds(420, 150, 140, 16);
-
-        jLabel7.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
-        jLabel7.setText("BIENVENIDOS A VITAL CARE V1.0");
-        background.add(jLabel7);
-        jLabel7.setBounds(420, 190, 310, 19);
-
-        jLabel8.setIcon(new javax.swing.ImageIcon("C:\\Users\\franc\\OneDrive\\Escritorio\\Semestre 5\\Programas\\Imagenes Proyecto\\vital care Cuidado y salud.png")); // NOI18N
-        background.add(jLabel8);
-        jLabel8.setBounds(430, 250, 210, 190);
-
-        add(background);
-        background.setBounds(0, 0, 720, 530);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 946, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 487, Short.MAX_VALUE)
+        );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel background;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

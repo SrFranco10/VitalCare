@@ -22,14 +22,16 @@ public class Agendar extends javax.swing.JPanel implements ActionListener {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         background = new javax.swing.JPanel();
+        tituloIngreso = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
         nombre = new javax.swing.JLabel();
         fecha = new javax.swing.JLabel();
         apellidos = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
         jSeparator5 = new javax.swing.JSeparator();
-        tituloCita = new javax.swing.JLabel();
         boxPacientes = new javax.swing.JComboBox<>();
         boxDoctores = new javax.swing.JComboBox<>();
         jSeparator10 = new javax.swing.JSeparator();
@@ -37,54 +39,156 @@ public class Agendar extends javax.swing.JPanel implements ActionListener {
         btnRegistrar = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(746, 470));
-        setLayout(null);
 
         background.setBackground(new java.awt.Color(255, 255, 255));
         background.setPreferredSize(new java.awt.Dimension(746, 470));
-        background.setLayout(null);
+
+        tituloIngreso.setFont(new java.awt.Font("Bahnschrift", 1, 24)); // NOI18N
+        tituloIngreso.setForeground(new java.awt.Color(0, 26, 94));
+        tituloIngreso.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        tituloIngreso.setText("REGISTRO DE PACIENTE");
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(new java.awt.GridBagLayout());
 
         nombre.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
+        nombre.setForeground(new java.awt.Color(0, 0, 0));
         nombre.setText("Nombre de Paciente");
-        background.add(nombre);
-        nombre.setBounds(80, 150, 160, 19);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.ipadx = 32;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(50, 180, 0, 0);
+        jPanel1.add(nombre, gridBagConstraints);
 
         fecha.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
+        fecha.setForeground(new java.awt.Color(0, 0, 0));
         fecha.setText("Fecha de cita (ingresar manualmente)");
-        background.add(fecha);
-        fecha.setBounds(80, 230, 260, 19);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 8;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.ipadx = 19;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(7, 180, 0, 0);
+        jPanel1.add(fecha, gridBagConstraints);
 
         apellidos.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
+        apellidos.setForeground(new java.awt.Color(0, 0, 0));
         apellidos.setText("Doctor Asignado");
-        background.add(apellidos);
-        apellidos.setBounds(80, 190, 130, 19);
-        background.add(jSeparator3);
-        jSeparator3.setBounds(80, 210, 520, 13);
-        background.add(jSeparator5);
-        jSeparator5.setBounds(80, 250, 526, 13);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.ipadx = 25;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(7, 180, 0, 0);
+        jPanel1.add(apellidos, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridwidth = 16;
+        gridBagConstraints.gridheight = 3;
+        gridBagConstraints.ipadx = 519;
+        gridBagConstraints.ipady = 12;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(1, 180, 0, 0);
+        jPanel1.add(jSeparator3, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 9;
+        gridBagConstraints.gridwidth = 17;
+        gridBagConstraints.gridheight = 3;
+        gridBagConstraints.ipadx = 525;
+        gridBagConstraints.ipady = 12;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(1, 180, 0, 164);
+        jPanel1.add(jSeparator5, gridBagConstraints);
 
-        tituloCita.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
-        tituloCita.setText("DEMO Agendar citas");
-        background.add(tituloCita);
-        tituloCita.setBounds(80, 40, 366, 19);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 5;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = 168;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(50, 10, 0, 0);
+        jPanel1.add(boxPacientes, gridBagConstraints);
 
-        background.add(boxPacientes);
-        boxPacientes.setBounds(360, 150, 240, 22);
-
-        background.add(boxDoctores);
-        boxDoctores.setBounds(360, 190, 240, 22);
-        background.add(jSeparator10);
-        jSeparator10.setBounds(80, 170, 520, 13);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridwidth = 5;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = 168;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(7, 10, 0, 0);
+        jPanel1.add(boxDoctores, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 16;
+        gridBagConstraints.gridheight = 3;
+        gridBagConstraints.ipadx = 519;
+        gridBagConstraints.ipady = 12;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(1, 180, 0, 0);
+        jPanel1.add(jSeparator10, gridBagConstraints);
 
         Fecha.setModel(new javax.swing.SpinnerDateModel());
-        background.add(Fecha);
-        Fecha.setBounds(480, 230, 128, 22);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 9;
+        gridBagConstraints.gridy = 8;
+        gridBagConstraints.gridwidth = 6;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = -6;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(7, 70, 0, 0);
+        jPanel1.add(Fecha, gridBagConstraints);
 
-        btnRegistrar.setText("Registrar");
-        background.add(btnRegistrar);
-        btnRegistrar.setBounds(290, 280, 120, 23);
+        btnRegistrar.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        btnRegistrar.setText("Añadir");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 12;
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.ipadx = 45;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(17, 40, 56, 0);
+        jPanel1.add(btnRegistrar, gridBagConstraints);
 
-        add(background);
-        background.setBounds(0, 0, 720, 530);
+        javax.swing.GroupLayout backgroundLayout = new javax.swing.GroupLayout(background);
+        background.setLayout(backgroundLayout);
+        backgroundLayout.setHorizontalGroup(
+            backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(backgroundLayout.createSequentialGroup()
+                .addGap(330, 330, 330)
+                .addComponent(tituloIngreso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(262, 262, 262))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        backgroundLayout.setVerticalGroup(
+            backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(backgroundLayout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addComponent(tituloIngreso)
+                .addGap(20, 20, 20)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 870, Short.MAX_VALUE)
+                .addGap(0, 0, 0))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 530, Short.MAX_VALUE)
+        );
     }// </editor-fold>//GEN-END:initComponents
 
 
@@ -96,11 +200,12 @@ public class Agendar extends javax.swing.JPanel implements ActionListener {
     private javax.swing.JComboBox<String> boxPacientes;
     private javax.swing.JButton btnRegistrar;
     private javax.swing.JLabel fecha;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator10;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JLabel nombre;
-    private javax.swing.JLabel tituloCita;
+    private javax.swing.JLabel tituloIngreso;
     // End of variables declaration//GEN-END:variables
 
     @Override

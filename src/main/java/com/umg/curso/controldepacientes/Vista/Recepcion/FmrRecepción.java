@@ -23,6 +23,7 @@ public class FmrRecepción extends javax.swing.JFrame implements ActionListener,
 
     
     public FmrRecepción() {
+        setUndecorated(true);
         initComponents();
         InitStyles();
         SetDate();
@@ -39,16 +40,16 @@ public class FmrRecepción extends javax.swing.JFrame implements ActionListener,
     
 
     
-    private void ShowJPanel(JPanel p){
-        p.setSize(650, 420);
-        p.setLocation(0,0);
-        
+    private void ShowJPanel(JPanel p) {
+        p.setLocation(0, 0); // Incluso esta línea podría no ser necesaria
+
         content.removeAll();
+        content.setLayout(new BorderLayout()); // Por si acaso, asegúrate de tener el layout correcto
         content.add(p, BorderLayout.CENTER);
         content.revalidate();
         content.repaint();
     }
-    
+
      private void InitStyles () {
         mensaje.setForeground(Color.black);
         
@@ -80,61 +81,47 @@ public class FmrRecepción extends javax.swing.JFrame implements ActionListener,
         mensaje = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(null);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setLayout(null);
 
         jPanel2.setBackground(new java.awt.Color(140, 205, 216));
         jPanel2.setMinimumSize(new java.awt.Dimension(282, 425));
-        jPanel2.setLayout(null);
 
-        tituloMenus.setFont(new java.awt.Font("Roboto Black", 0, 36)); // NOI18N
+        tituloMenus.setFont(new java.awt.Font("Roboto Black", 1, 24)); // NOI18N
         tituloMenus.setForeground(new java.awt.Color(255, 255, 255));
-        tituloMenus.setText("Pre consulta");
-        jPanel2.add(tituloMenus);
-        tituloMenus.setBounds(40, 50, 210, 47);
+        tituloMenus.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        tituloMenus.setText("Recepción");
 
         jSeparator1.setBackground(new java.awt.Color(255, 255, 255));
         jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
         jSeparator1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jPanel2.add(jSeparator1);
-        jSeparator1.setBounds(40, 100, 203, 17);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\franc\\OneDrive\\Escritorio\\Semestre 5\\Programas\\Imagenes Proyecto\\vital care Cuidado y salud.png")); // NOI18N
-        jPanel2.add(jLabel1);
-        jLabel1.setBounds(30, 120, 218, 200);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logo.png"))); // NOI18N
 
         btnIngresar.setBackground(new java.awt.Color(169, 205, 216));
         btnIngresar.setFont(new java.awt.Font("Roboto Black", 1, 18)); // NOI18N
         btnIngresar.setForeground(new java.awt.Color(255, 255, 255));
-        btnIngresar.setIcon(new javax.swing.ImageIcon("C:\\Users\\franc\\OneDrive\\Escritorio\\Semestre 5\\Programas\\Imagenes Proyecto\\IngresarPaciente.png")); // NOI18N
+        btnIngresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/IngresarPaciente.png"))); // NOI18N
         btnIngresar.setText("Ingresar Paciente");
         btnIngresar.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
         btnIngresar.setBorderPainted(false);
         btnIngresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnIngresar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnIngresar.setIconTextGap(10);
-        jPanel2.add(btnIngresar);
-        btnIngresar.setBounds(0, 360, 280, 51);
 
         btnReingreso.setBackground(new java.awt.Color(169, 205, 216));
         btnReingreso.setFont(new java.awt.Font("Roboto Black", 1, 18)); // NOI18N
         btnReingreso.setForeground(new java.awt.Color(255, 255, 255));
-        btnReingreso.setIcon(new javax.swing.ImageIcon("C:\\Users\\franc\\OneDrive\\Escritorio\\Semestre 5\\Programas\\Imagenes Proyecto\\AgendarCita.png")); // NOI18N
-        btnReingreso.setText("Reingreso Paciente");
+        btnReingreso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/registros-medicos.png"))); // NOI18N
+        btnReingreso.setText("Reingreso de Paciente");
         btnReingreso.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
         btnReingreso.setBorderPainted(false);
         btnReingreso.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnReingreso.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnReingreso.setIconTextGap(10);
-        jPanel2.add(btnReingreso);
-        btnReingreso.setBounds(0, 410, 280, 51);
 
         btnSalir1.setIcon(new javax.swing.ImageIcon("C:\\Users\\franc\\OneDrive\\Escritorio\\Semestre 5\\Programas\\Imagenes Proyecto\\cerrar-sesion-de-usuario(1).png")); // NOI18N
         btnSalir1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel2.add(btnSalir1);
-        btnSalir1.setBounds(0, 0, 40, 50);
 
         btnAgendar.setBackground(new java.awt.Color(169, 205, 216));
         btnAgendar.setFont(new java.awt.Font("Roboto Black", 1, 18)); // NOI18N
@@ -146,11 +133,53 @@ public class FmrRecepción extends javax.swing.JFrame implements ActionListener,
         btnAgendar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAgendar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnAgendar.setIconTextGap(10);
-        jPanel2.add(btnAgendar);
-        btnAgendar.setBounds(0, 460, 280, 51);
 
-        jPanel1.add(jPanel2);
-        jPanel2.setBounds(0, 0, 280, 700);
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnSalir1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(tituloMenus, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
+                .addGap(34, 34, 34))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(btnIngresar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(2, 2, 2))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(btnAgendar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(2, 2, 2))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(btnReingreso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(2, 2, 2))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(btnSalir1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(tituloMenus)
+                .addGap(3, 3, 3)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(3, 3, 3)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(100, 100, 100)
+                        .addComponent(btnAgendar, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(50, 50, 50)
+                        .addComponent(btnReingreso, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         content.setBackground(new java.awt.Color(255, 255, 255));
         content.setMinimumSize(new java.awt.Dimension(641, 389));
@@ -159,47 +188,102 @@ public class FmrRecepción extends javax.swing.JFrame implements ActionListener,
         content.setLayout(contentLayout);
         contentLayout.setHorizontalGroup(
             contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 720, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         contentLayout.setVerticalGroup(
             contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 530, Short.MAX_VALUE)
         );
 
-        jPanel1.add(content);
-        content.setBounds(280, 170, 720, 530);
-
         header.setBackground(new java.awt.Color(78, 196, 197));
         header.setPreferredSize(new java.awt.Dimension(750, 150));
-        header.setLayout(null);
 
-        titulo.setFont(new java.awt.Font("Roboto Condensed Black", 0, 24)); // NOI18N
+        titulo.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 36)); // NOI18N
         titulo.setForeground(new java.awt.Color(255, 255, 255));
-        titulo.setText("Administracion Hospitalaria y Clinica VitalCare");
-        header.add(titulo);
-        titulo.setBounds(50, 30, 492, 32);
+        titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titulo.setText("ADMINISTRACION HOSPITALARIA");
 
         logoPeque.setIcon(new javax.swing.ImageIcon("C:\\Users\\franc\\OneDrive\\Escritorio\\Semestre 5\\Programas\\Imagenes Proyecto\\logopequeno.png")); // NOI18N
-        header.add(logoPeque);
-        logoPeque.setBounds(550, 10, 55, 55);
 
-        fecha.setFont(new java.awt.Font("Roboto SemiCondensed Black", 0, 14)); // NOI18N
+        fecha.setFont(new java.awt.Font("Roboto SemiCondensed Black", 0, 18)); // NOI18N
         fecha.setForeground(new java.awt.Color(255, 255, 255));
         fecha.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         fecha.setText("Hoy es {dayname} {day} de {month} de {year}");
-        header.add(fecha);
-        fecha.setBounds(50, 50, 517, 71);
 
-        jPanel1.add(header);
-        header.setBounds(260, 40, 740, 130);
+        javax.swing.GroupLayout headerLayout = new javax.swing.GroupLayout(header);
+        header.setLayout(headerLayout);
+        headerLayout.setHorizontalGroup(
+            headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(headerLayout.createSequentialGroup()
+                .addGroup(headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(headerLayout.createSequentialGroup()
+                        .addGap(54, 54, 54)
+                        .addComponent(fecha, javax.swing.GroupLayout.DEFAULT_SIZE, 741, Short.MAX_VALUE)
+                        .addGap(37, 37, 37))
+                    .addGroup(headerLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(titulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addComponent(logoPeque)
+                .addGap(19, 19, 19))
+        );
+        headerLayout.setVerticalGroup(
+            headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headerLayout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addGroup(headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(headerLayout.createSequentialGroup()
+                        .addComponent(logoPeque, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addGap(16, 16, 16))
+                    .addGroup(headerLayout.createSequentialGroup()
+                        .addComponent(titulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(fecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(28, 28, 28))
+        );
 
         mensaje.setFont(new java.awt.Font("Roboto Black", 2, 14)); // NOI18N
         mensaje.setText("\"Y conoceréis la verdad y la verdad os hará libres”. Juan 8:32");
-        jPanel1.add(mensaje);
-        mensaje.setBounds(300, 10, 410, 19);
 
-        getContentPane().add(jPanel1);
-        jPanel1.setBounds(0, 0, 1000, 700);
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(300, 300, 300)
+                .addComponent(mensaje, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(280, 280, 280))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(header, javax.swing.GroupLayout.DEFAULT_SIZE, 906, Short.MAX_VALUE)
+                    .addComponent(content, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(170, 170, 170)
+                .addComponent(content, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(mensaje))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(header, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -273,7 +357,7 @@ public class FmrRecepción extends javax.swing.JFrame implements ActionListener,
     public void mouseClicked(MouseEvent e) {
         if(e.getSource() == btnSalir1){
             FmrLogin Credenciales = new FmrLogin();
-            Credenciales.setBounds(0, 0, 900, 500);
+            Credenciales.setBounds(400, 300, 900, 500);
             Credenciales.setVisible(true);
             this.dispose();
         }
